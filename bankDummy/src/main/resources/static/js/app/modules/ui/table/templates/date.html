@@ -1,0 +1,6 @@
+<div class="text-center" ng-if="hasFormat">
+	<span ng-bind="data | date : format"></span>
+</div>
+<div class="text-center" ng-if="!hasFormat">
+	<span ng-bind="data | date : 'dd/MM/yyyy'"></span>
+</div>

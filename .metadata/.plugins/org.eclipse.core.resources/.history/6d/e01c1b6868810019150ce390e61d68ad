@@ -1,0 +1,24 @@
+<label class="control-label">{{$ctrl.config.userGroupLabel
+	| translate}} </label>
+<div class="panel-body">
+	<div>
+		<ol>
+			<li style="margin-bottom: 1em;"
+				ng-repeat="policy in $ctrl.model.policyItems | filter:{policyType:'USER'}" id="{{policy.policyTopic}}"><ng-include
+					src="'/js/app/modules/policy/templates/user/'+ (policy.policyTopic | lowercase) + '.html'"></ng-include></li>
+		</ol>
+	</div>
+</div>
+<label class="control-label">{{$ctrl.config.passwordGroupLabel
+	| translate}} </label>
+<div class="panel-body">
+	<div>
+		<ol>
+			<li style="margin-bottom: 1em;"
+				ng-repeat="policy in $ctrl.model.policyItems | filter:{policyType:'PASSWORD'}"
+				id="{{policy.policyTopic}}"><ng-include
+					src="'/js/app/modules/policy/templates/password/'+ (policy.policyTopic | lowercase)+ '.html'"></ng-include>
+			</li>
+		</ol>
+	</div>
+</div>

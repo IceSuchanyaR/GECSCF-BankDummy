@@ -1,0 +1,203 @@
+.positive  { color: black; }
+.negative  { color: red; }
+
+input[type=number]::-webkit-inner-spin-button {
+ cursor: pointer;
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+.round-button
+{
+
+ display: table-cell;
+}
+
+.lblname{
+  display: table-cell;
+}
+
+.font-15{
+  font-size: 15px;
+}
+
+.font-14{
+  font-size: 14px;
+}
+
+.font-13{
+  font-size: 13px;
+}
+
+.font-12{
+  font-size: 12px;
+}
+
+.font-11{
+  font-size: 11px;
+}
+
+.font-10{
+  font-size: 10px;
+}
+
+.width-25-px{
+  width: 25px;
+}
+
+.auto-size {
+  width: auto !important;
+  height: auto !important;
+}
+
+.no-margin {
+  margin: 0% !important;
+}
+
+.full-w{
+  width:  100% !important;
+}
+
+.space {
+  width: 15px;
+}
+.rem-space {
+  width: 1rem;
+}
+
+.rem-left-1 {
+  padding-left: 1rem !important;
+}
+
+.rem-left-2 {
+  padding-left: 2rem !important;
+}
+
+.rem-left-3 {
+  padding-left: 3rem !important;
+}
+
+.margin-left-2 {
+  margin-left: 2rem !important;
+}
+
+.margin-left-3 {
+  margin-left: 3rem !important;
+}
+
+.rem-right-1 {
+  padding-right: 1rem !important;
+}
+
+.rem-right-2 {
+  padding-right: 2rem !important;
+}
+
+.rem-hori-1 {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.rem-hori-1-5 {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.rem-hori-2 {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+.margin-hori-0 {
+  margin-left: 0  !important;
+  margin-right: 0 !important;
+}
+
+.padding-verti-1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.padding-verti-0-5 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.padding-top-1 {
+  padding-top: 1rem;
+}
+
+.padding-top-0-5 {
+  padding-top: 0.5rem;
+}
+
+.padding-1 {
+  padding: 1rem;
+}
+
+.padding-0-5 {
+  padding: 0.5rem;
+}
+
+.body-white {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0px 1px 1px 1px #b6b6b6;
+}
+
+.body-white-rem-hori-1 {
+  background-color: white;
+  padding: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: 0px 1px 1px 1px #b6b6b6;
+}
+
+h3 {
+  margin: 0px;
+  font-weight: 350;
+}
+
+label {
+  margin: 0px !important;
+}
+
+input, select {
+    font-size: 12px !important;
+}
+
+h1 {
+    font-weight: 600 !important;
+}
+
+th {
+    font-size: 13px !important;
+}
+
+button {
+    font-size: 14px !important;
+}
+
+th, td {
+    white-space: nowrap;
+}
+
+.in-text-right {
+  text-align: right;
+}
+
+.serif {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.sansserif {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.margin-auto {
+  margin: auto;
+}

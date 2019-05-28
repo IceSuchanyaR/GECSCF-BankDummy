@@ -1,0 +1,22 @@
+<div class="modal-content">
+	<form name="confirmDlg" class="form-horizontal"
+		ng-submit="closeThisDialog(true);">
+		<div class="modal-header">
+			<h2>
+				<span id="popup-confirm-header-message-label" class="popup-text"
+					ng-bind="ngDialogData.headerMessage | translate"></span>
+			</h2>
+		</div>
+		<div class="modal-body">
+		</div>
+		<div class="modal-footer">
+			<div class="text-right">
+				<button id="popup-no-button" class="popup-button btn btn-default"
+					ng-click="closeThisDialog(false)" ng-bind="'NO' | translate"></button>
+				<label class="row-space-btn"></label>
+				<button id="popup-yes-button" class="popup-button btn btn-success btn-yes"
+					type="submit" ng-bind="'Yes' | translate"></button>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,12 @@
+<div>
+	<span class="control-label" ng-if="!$ctrl.hasLogo">{{'No logo' |
+		translate}}</span> <img style="height: 32px; width: 32px;"
+		data-ng-src="data:image/png;base64,{{$ctrl.logo}}"
+		data-err-src="images/png/avatar.png" ng-show="$ctrl.hasLogo" />
+	&nbsp;
+	<button type="button" class="btn-org btn-add btn" ng-if="$ctrl.config.action"
+		id="funding-profile-logo-setup-button"
+		ng-click="$ctrl.doAction($ctrl.data)">
+		<i class="fa fa-cog" aria-hidden="true"></i>
+	</button>
+</div>

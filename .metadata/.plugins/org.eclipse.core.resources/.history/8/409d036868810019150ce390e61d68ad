@@ -1,0 +1,43 @@
+page:
+  title: specific.community.owner.webservice_log_detail_message.page.label.title
+  form:
+    rows:
+    - items:
+      - name: requestHeader
+        type: label
+        label: Header
+      - name: requestMessage
+        type: label
+        label: Message
+      - name: processNo
+        type: label
+        label: specific.community.owner.webservice_log_detail_message.form.label.ref_no
+      - name: sponsorName
+        type: label
+        label: specific.community.owner.webservice_log_detail_message.form.label.sponsor_name
+      - name: webserviceStatus
+        type: label
+        label: specific.community.owner.webservice_log_detail_message.form.label.status
+      - type: space
+    footer:
+      actions:
+      - label: Back
+        handler:
+          navigation:
+            to: back   
+  table:
+    name: webserviceLogDetails
+    autoSearch: true
+    fetching:
+      handler: getWebserviceLogDetails
+    columns:
+    - type: text
+      label: specific.community.owner.webservice_log_detail_message.table.header_label.action
+      name: action
+    - name: time
+      label: specific.community.owner.webservice_log_detail_message.table.header_label.time
+      type: datetime-log
+    - type: json
+      readOnly: true
+      label: specific.community.owner.webservice_log_detail_message.table.header_label.message
+      name: message

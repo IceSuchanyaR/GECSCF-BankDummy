@@ -1,0 +1,26 @@
+<div class="form-group col-12">
+	<label class="control-label" for="{{$ctrl.config.name}}"
+		ng-bind="$ctrl.config.label | translate"></label>
+	<div ng-repeat="group in $ctrl.groups track by $index"
+		class="col-12
+            form-group row">
+		<label id="{{group[$ctrl.config.groupLabelField]}}-label"
+			class="col-12 control-label">{{group[$ctrl.config.groupLabelField]}}</label>
+		<div
+			ng-repeat="item in group[$ctrl.config.groupItemsField] track by $ctrl.itemId(item)"
+			class="col-md-6 control-label" block-ui="{{$ctrl.config.name}}-group-checklist">
+			<div class="col row">
+				<span class="col-lg-12 col-12"> <label
+					class="checkbox-inline label-thin"> <input type="checkbox"
+						checklist-model="$ctrl.model" checklist-value="item"
+						checklist-comparator="$ctrl.compareItem"
+						ng-disabled="$ctrl.config.disabled" ng-click="toggleSelection()"
+						ng-init="toggleSelection()" /> <span>{{$ctrl.label(item)}}</span>
+				</label>
+				</span>
+			</div>
+		</div>
+	</div>
+	<span class="error-msg"
+		ng-bind="errors[$ctrl.config.name].cause | translate:errors[$ctrl.config.name].params "></span>
+</div>

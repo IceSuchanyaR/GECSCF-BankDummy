@@ -1,0 +1,10 @@
+<div class="app-title">
+	<div>
+		<h1 ng-bind="$ctrl.page.title | translate"></h1>
+	</div>
+</div>
+<div class="tile" ui-view="body" page-ready="$ctrl.page.fech($ctrl.criteria)">
+	<div class="tile-body">
+		<gec-filter config="$ctrl.page.filter" criteria="$ctrl.criteria" page-data="$ctrl.pageData"></gec-filter>
+	</div>
+</div>

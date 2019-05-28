@@ -1,0 +1,20 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<h2>
+			<span id="popup-confirm-header-message-label" class="popup-text"
+				ng-bind="ngDialogData.headerMessage | translate"></span>
+		</h2>
+	</div>
+	<gec-form name="confirmDlg" type="dialog" config="ngDialogData.form"
+		model="ngDialogData.model" submit-callback="closeThisDialog">
+	<div class="modal-footer" ng-if="ngDialogData.footer">
+		<div class="text-right">
+			<button ng-if="!ngDialogData.footer.hideCancelButton" type="button" class="btn btn-default}}" ng-click="closeThisDialog(false)">{{'Cancel'
+				| translate}}</button>
+			<gec-button-action
+				ng-repeat="action in ngDialogData.footer.actions" form-data="ngDialogData.model"
+				config="action" callback="closeThisDialog"></gec-button-action>
+		</div>
+	</div>
+	</gec-form>
+</div>

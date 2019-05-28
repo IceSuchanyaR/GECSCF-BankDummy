@@ -1,0 +1,3 @@
+<input class="form-control text-left" ng-model="$ctrl.data" ng-disabled="$ctrl.config.disabled"
+	placeholder="{{$ctrl.config.placeholder | translate}}"
+	name="{{$ctrl.config.name}}">

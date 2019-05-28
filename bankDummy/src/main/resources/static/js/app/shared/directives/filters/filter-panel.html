@@ -1,0 +1,37 @@
+<form name="filterForm" ng-submit="search(criteria)"
+	novalidate="novalidate">
+	<div class="tile-title-w-btn">
+		<h3 class="title" ng-bind="filter.title"></h3>
+		<p>
+			<button type="button" class="btn collapsed" id="filter-button"
+				data-toggle="collapse" data-target="#filter-panel">
+				{{'Filter' }}
+			</button>
+			<button type="button" class="btn btn-default {{action.cssStyleClass}}"
+				ng-disabled="action.disabled"
+				ng-click="doAction(action.referTo)"
+				ng-repeat="action in filter.actions">
+				<i class="fa fa-fw fa-lg {{action.icon}}"></i> {{action.label }}
+			</button>
+
+		</p>
+	</div>
+	<div class="tile-body collapse" id="filter-panel">
+		<div class="row" ng-repeat="r in filter.rows">
+			<div class="col-md-6" ng-repeat="item in r.items"
+				ng-class="{'hidden-md-down': item.type == 'space', 'form-group': item.type != 'space'}"
+				filter-item="item" filter-type="item.type" filter-model="criteria"></div>
+
+
+		</div>
+		<div class="row form-group justify-content-center">
+			<button class="btn btn-primary" type="submit">
+				{{'Search'}}
+			</button>
+			&nbsp;&nbsp;
+			<button class="btn btn-secondary" type="button" ng-click="clear()">
+				{{'Clear'}}
+			</button>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,26 @@
+page:
+  title: Services
+  form:
+    footer:
+      actions:
+      - label: Back
+        handler:
+          navigation:
+            to: back   
+            
+  table:
+    name: uploadLogDetails
+    autoSearch: true
+    fetching:
+      handler: getServices
+    columns:
+    - type: rownumber
+      label: No
+      name: lineNo
+    - name: serviceName
+      label: Service
+      type: text
+    actions:
+    - label: Execute
+      icon: fa fa-cog
+      handler: pageNavigator

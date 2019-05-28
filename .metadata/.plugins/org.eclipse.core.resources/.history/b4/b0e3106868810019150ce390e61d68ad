@@ -1,0 +1,90 @@
+<form class="form-horizontal" ng-submit="$ctrl.submit($ctrl.model)"
+	autocomplete="off" name="{{$ctrl.config.name}}" novalidate="" ng-if="$ctrl.showItem($ctrl.config, $ctrl.model)">
+	<div class="tile-title-w-btn">
+		<p></p>
+		<p>
+			<gec-button-action ng-repeat="action in $ctrl.config.actions"
+				config="action" handler="action.handler"> </gec-button-action>
+		</p>
+	</div>
+	<div class="{{$ctrl.style.bodyClass}}">
+		<div class="row" ng-repeat="r in $ctrl.config.rows" ng-switch="r.type">
+			<div ng-if="r.header!=undefined &amp;&amp; $ctrl.showItem(r.header, $ctrl.model)" class="col-12">
+				<h3 class="title" ng-bind="r.header.title | translate"></h3>
+				<p>
+					<gec-button-action ng-repeat="action in r.header.actions" config="action" handler="action.handler"
+						form-validation="$ctrl.getFormValidation()" form-data="$ctrl.model"> </gec-button-action>
+				</p>
+			</div>
+			<gec-form-item class="form-group {{$ctrl.style.itemColumnClass}}"
+				ng-repeat="item in r.items" config="item" data="$ctrl.model" 
+				ng-if="$ctrl.showItem(item, $ctrl.model)"
+				ng-switch-default> </gec-form-item>
+
+			<div class="form-group col-12" ng-switch-when="table" ng-show="$ctrl.showItem(r, $ctrl.model)">
+				<gec-data-table config="r" data="$ctrl.model[r.name]" criteria="$ctrl.criteria[r.name]">
+				<gec-table-pagination></gec-table-pagination> </gec-data-table>
+
+			</div>
+			<div class="form-group col-12" ng-switch-when="document-table" ng-show="$ctrl.showItem(r, $ctrl.model)">
+				<gec-data-table config="r" data="$ctrl.model[r.name]" criteria="$ctrl.criteria[r.name]">
+				<gec-table-pagination></gec-table-pagination> </gec-data-table>
+
+			</div>
+			
+			<gec-editable-table ng-switch-when="editable-table" config="r"
+				model="$ctrl.model[r.name]" class="form-group col-12" ></gec-editable-table>
+
+			<gec-group-checklist ng-switch-when="group-checklist" config="r"
+				model="$ctrl.model[r.name]"></gec-group-checklist>
+			
+			<gec-form-table ng-switch-when="form-table" config="r"
+				model="$ctrl.model[r.name]" class="form-group col-12" ></gec-form-table>
+				
+			<gec-selection-table ng-switch-when="selection-table" config="r"
+				model="$ctrl.model[r.name]" class="form-group col-12" ></gec-selection-table>
+				
+			<gec-policies ng-switch-when="policies" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-policies>
+				
+			<gec-image-form ng-switch-when="image-form" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-image-form>
+				
+			<gec-view-payment-transaction ng-switch-when="view-payment" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-view-payment-transaction>
+			
+			<gec-view-loan-transaction ng-switch-when="view-loan" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-view-loan-transaction>
+				
+			<gec-create-loan-search ng-switch-when="create-loan-search" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-create-loan-search>
+				
+			<gec-create-loan-selection ng-switch-when="create-loan-selection" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-create-loan-selection>
+				
+			<gec-create-loan-plan ng-switch-when="create-loan-plan" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-create-loan-plan>
+			
+			<gec-create-loan-submit-plan ng-switch-when="create-loan-submit-plan" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-create-loan-submit-plan>
+			
+			<gec-transaction-table ng-switch-when="transaction-table" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-transaction-table>
+				
+			<gec-dual-control-history ng-switch-when="dual-control-history" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-dual-control-history>
+				
+			<gec-dual-control-general-data ng-switch-when="dual-control-general-data" config="r"
+				model="$ctrl.model" class="form-group col-12" ></gec-dual-control-general-data>
+			
+		</div>
+	</div>
+	<ng-transclude></ng-transclude>
+	<!-- <gec-form-footer ng-if="$ctrl.config.footer">
+	
+		<gec-button-action ng-repeat="action in $ctrl.config.footer.actions" form-data="$ctrl.model" config="action"
+			form-validation="$ctrl.getFormValidation()" handler="action.handler">
+		</gec-button-action>
+	
+	</gec-form-footer> -->
+</form>

@@ -1,0 +1,197 @@
+<style type="text/css">
+.form-control {
+	width: 150%;
+}
+
+.form-horizontal .control-label {
+	width: 190px;
+}
+</style>
+
+<body>
+	<div class="app-title">
+		<h1>Register Account - {{mode}}</h1>
+		<span class="col"></span>
+		<button class="btn btn-primary btn-sx" type="submit"
+			title="Submit" form="createform">Submit</button>
+		<span class="space"></span>
+		<button ui-sref="register_account_list" class="btn btn-danger btn-sx"
+			title="Back">Back</button>
+	</div>
+
+	<div class="title panel-body body-white-rem-hori-1">
+
+		<div align="left">
+			<div class="alert alert-danger" role="alert"
+				ng-show="$ctrlMgnt.displayAlertError">
+				<strong>{{$ctrlMgnt.showErrorMessage}}</strong>
+			</div>
+
+			<div class="alert alert-success"
+				ng-show="$ctrlMgnt.displayAlertSuccess">
+				<strong>Submit success</strong>
+			</div>
+		</div>
+
+		<form ng-submit="$ctrlMgnt.submitBankAccount(params)" id="createform"
+			class="form-horizontal">
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">
+					Customer ID <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<input type="text" class="form-control money"
+						ng-model="params.customerID" 
+						maxlength="20" ng-required="true" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">
+					Bank Code <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<input type="text" class="form-control money"
+					 maxlength="50"
+						ng-model="params.bankCode" ng-required="true" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">
+					Account No <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<input type="text" class="form-control money" pattern="\d*"
+						 maxlength="20"
+						ng-model="params.accountNo" ng-required="true" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">
+					Sponsor Code  </label>
+				<div class="col-5">
+					<input type="text" class="form-control"
+						maxlength="20"
+						ng-model="params.customerCode" />
+				</div>
+			</div>
+
+
+
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">
+					Account Type <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<select ng-click="$ctrlMgnt.clearchk()" name="accountType"
+						id="accountType" class="form-control" style="height: 34px;"
+						ng-model="params.accountType" 
+						ng-options="obj.configValue as obj.configDisplay for obj in
+						$ctrlMgnt.configApp">
+						<option value="">Please Select</option>
+					</select>
+				</div>
+			</div>
+			
+			
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">
+					Currency Code <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<input type="text" class="form-control money"
+						ng-model="params.currencyCode" 
+						maxlength="20" ng-required="true" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="customerCreditLimit" class="control-label col-4 in-text-right">
+					Sponsor Credit Limit </label>
+				<div class="col-5">
+					<input type="checkbox" name="customerCreditLimit" 
+						ng-model="params.customerCreditLimit"
+						ng-disabled="params.accountType == 'CURRENT' || params.accountType ==
+						'SAVING' || params.accountType == '' || params.accountType == null" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="creditlimit" class="control-label col-4 in-text-right">
+					Credit Limit <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<input type="number" ng-change="onChangeValueCurrency()"
+						ng-disabled="params.accountType == 'CURRENT' || params.accountType ==
+						'SAVING' || params.accountType == '' || params.accountType == null"
+						class="form-control money" currency-mask
+						ng-model="params.creditLimit" ng-required="true" />
+					( <span class="text-danger" ng-bind="params.creditLimit || '-' | number:
+						2"> - </span> )
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="outstandingAmount" class="control-label col-4 in-text-right">
+					Ledger Balance <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<input type="number" ng-change="onChangeValueCurrency()"
+						ng-disabled="params.accountType == 'TERM_LOAN' || params.accountType == ''
+						|| params.accountType == null"
+						class="form-control money" ng-model="params.ledgerBalance"
+						ng-required="true" currency-mask />
+					( <span class="text-danger" ng-bind="params.ledgerBalance || '-' | number:
+						2"> - </span> )
+				</div>
+
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="remainingAmount" class="control-label col-4 in-text-right">
+					Account Status <a style="color: red;">*</a>
+				</label> &ensp;&ensp;<input type="radio" name="Account Status"
+					value="ACTIVE" ng-model="params.accountStatus" checked>
+				Active &ensp;<input type="radio" name="Account Status"
+					value="SUSPEND" ng-model="params.accountStatus"> Suspend
+
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+		</form>
+	</div>
+
+
+</body>

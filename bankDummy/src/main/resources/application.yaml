@@ -1,0 +1,72 @@
+db:
+  host: ${DB_HOST:localhost}
+  port: ${DB_PORT:3306}
+  name: ${DB_NAME:gecscf_sponsor_dummy_dev}
+  username: ${DB_USER:root}
+  password: ${DB_PASS:root}
+authorization:
+  url: https://localhost:${server.port}
+server:
+  session:
+    cookie:
+      http-only: true
+      secure: true
+  port: 9943
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-password: gecadmin
+    key-store-Type: PKCS12
+    key-alias: gecscf
+spring:
+  application:
+    name: sponsor-dummy-service
+  profiles: 
+    active: production
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      USE_BIG_DECIMAL_FOR_FLOATS: true
+    serialization:
+      write_dates_as_timestamps: false
+    time-zone: Asia/Bangkok
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${db.host}:${db.port}/${db.name}
+    username: ${db.username}
+    password: ${db.password}
+    initialize: false
+    ddl-auto: update
+    max-wait: 10000
+    max-active: 377
+    max-idle: 233
+    min-idle: 89
+    test-while-idle: true
+    test-on-borrow: true
+    validation-query: SELECT 1
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 55000
+    remove-abandoned: true
+    remove-abandoned-timeout: 55
+  jpa:
+    naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    generate-ddl: false
+    hibernate:
+      dll-auto: none
+      enable-lazy-load-no-trans: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${authorization.url}/.well-known/jwks.json
+logging:
+  level:
+    org.springframework:
+      security: DEBUG
+      session: TRACE
+    org.hibernate:
+      SQL: DEBUG
+      type:
+        descriptor:
+          sql:
+            BasicBinder: TRACE

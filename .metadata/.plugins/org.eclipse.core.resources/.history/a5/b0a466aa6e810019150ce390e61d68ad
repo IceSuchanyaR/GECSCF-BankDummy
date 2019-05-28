@@ -1,0 +1,148 @@
+package dummy.bank.kbankws.account.domain;
+
+
+import gec.scf.dummy.bank.kbankws.enums.AccountStatus;
+import gec.scf.dummy.bank.kbankws.enums.AccountType;
+import gec.scf.dummy.bank.kbankws.enums.MappingStatus;
+
+import java.io.Serializable;
+
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+public class AccountBalanceResponse implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private String accountNo;
+
+	private AccountType accountType;
+
+	private String customerId;
+
+	private String creditLimit;
+
+	private String outstanding;
+
+	private String accountBalance;
+
+	private String availableBalance;
+
+	private String currencyCode;
+ 
+	private String latestTransactionTime;
+
+	private AccountStatus accountStatus;
+
+	private MappingStatus enquiryStatus;
+
+	private String failureReasonCode;
+
+	private String failureReason;
+
+	public String getAccountNo() {
+		return accountNo;
+	}
+
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
+	}
+
+	public AccountType getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
+	}
+
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getCreditLimit() {
+		return creditLimit;
+	}
+
+	public void setCreditLimit(String creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+
+	public String getOutstanding() {
+		return outstanding;
+	}
+
+	public void setOutstanding(String outstanding) {
+		this.outstanding = outstanding;
+	}
+
+	public String getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(String accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
+	public String getAvailableBalance() {
+		return availableBalance;
+	}
+
+	public void setAvailableBalance(String availableBalance) {
+		this.availableBalance = availableBalance;
+	}
+
+	public String getCurrencyCode() {
+		return currencyCode;
+	}
+
+	public void setCurrencyCode(String currencyCode) {
+		this.currencyCode = currencyCode;
+	}
+
+	public String getLatestTransactionTime() {
+		return latestTransactionTime;
+	}
+
+	public void setLatestTransactionTime(String latestTransactionTime) {
+		this.latestTransactionTime = latestTransactionTime;
+	}
+
+	public AccountStatus getAccountStatus() {
+		return accountStatus;
+	}
+
+	public void setAccountStatus(AccountStatus accountStatus) {
+		this.accountStatus = accountStatus;
+	}
+
+	public MappingStatus getEnquiryStatus() {
+		return enquiryStatus;
+	}
+
+	public void setEnquiryStatus(MappingStatus enquiryStatus) {
+		this.enquiryStatus = enquiryStatus;
+	}
+
+	public String getFailureReasonCode() {
+		return failureReasonCode;
+	}
+
+	public void setFailureReasonCode(String failureReasonCode) {
+		this.failureReasonCode = failureReasonCode;
+	}
+
+	public String getFailureReason() {
+		return failureReason;
+	}
+
+	public void setFailureReason(String failureReason) {
+		this.failureReason = failureReason;
+	}
+
+}

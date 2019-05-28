@@ -1,0 +1,22 @@
+<div class="row">
+	<div ng-repeat="record in $ctrl.data track by $index"
+		style="padding: 10px">
+		<div style="max-width: 18rem;">
+
+			<button class="btn-default btn-logo" type="submit"
+				ng-if="$ctrl.hasLogo(record)" style="height: 115px; width: 115px;"
+				ng-click="$ctrl.select(record)"> <img
+					style="height: 90px; width: 90px;"
+					title="{{record[$ctrl.config.nameField]}}"
+					data-ng-src="data:image/png;base64,{{$ctrl.logo(record)}}" />
+			</button>
+
+			<button class="btn-default btn-logo nologo" type="submit"
+				ng-if="!$ctrl.hasLogo(record)" title="{{record[$ctrl.config.nameField]}}"
+				ng-bind="'{{record[$ctrl.config.nameField]}}'"
+				ng-click="$ctrl.select(record)"> </button>
+			<br />
+			<label class="full-w text-center">{{ record.sponsorName }}</label>
+		</div>
+	</div>
+</div>

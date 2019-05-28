@@ -1,0 +1,308 @@
+package dummy.security.model;
+
+import java.io.Serializable;
+import java.util.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonView;
+import dummy.bank.entity.BankManageEvent;
+import dummy.bank.entity.BaseBankEntity;
+import dummy.common.utils.ErrorMessages;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+@Entity
+@Table(name = "tbl_user", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"username"})})
+public class User extends BaseBankEntity implements UserDetails, Serializable {
+
+    private static final long serialVersionUID = 4539608055878514329L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    @JsonView({UserEvent.View.DetailForCommonUser.class})
+    private Long id;
+
+    @Column(unique = true)
+    @JsonView({UserEvent.View.DetailForAllUser.class, UserEvent.View.DetailForCommonUser.class, BankManageEvent.View.DetailForManageBank.class})
+    @NotNull(message = ErrorMessages.FIELD_IS_REQUIRED, groups = {UserEvent.Validation.Update.class, UserEvent.Validation.Create.class})
+    private String username;
+
+    @Column
+    private String password;
+
+    @Column(unique = true)
+    @Email
+    @JsonView({UserEvent.View.DetailForAllUser.class, UserEvent.View.DetailForCommonUser.class, BankManageEvent.View.DetailForManageBank.class})
+    private String email;
+
+    @Column
+    @JsonView({UserEvent.View.DetailForAllUser.class, UserEvent.View.DetailForCommonUser.class, BankManageEvent.View.DetailForManageBank.class})
+    private String fullName;
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonView({UserEvent.View.DetailForAllUser.class, UserEvent.View.DetailForCommonUser.class})
+    @NotNull(message = ErrorMessages.FIELD_IS_REQUIRED, groups = {UserEvent.Validation.Update.class, UserEvent.Validation.Create.class})
+    private Date birthday;
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonView({UserEvent.View.DetailForCommonUser.class})
+    private Date lastLoginDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "create_by", insertable = false, updatable = false)
+    private User createByUser;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "update_by", insertable = false, updatable = false)
+    private User updateByUser;
+
+    @Column
+    @JsonView({UserEvent.View.DetailForAllUser.class, UserEvent.View.DetailForCommonUser.class, BankManageEvent.View.DetailForManageBank.class})
+    private String createByUsername;
+
+    @Column
+    @JsonView({UserEvent.View.DetailForAllUser.class, UserEvent.View.DetailForCommonUser.class, BankManageEvent.View.DetailForManageBank.class})
+    private String updateByUsername;
+
+    @Column
+    private boolean accountExpired;
+
+    @Column
+    private boolean accountLocked;
+
+    @Column
+    private boolean credentialsExpired;
+
+    @Column
+    @JsonView({UserEvent.View.DetailForCommonUser.class})
+    private boolean enabled;
+
+    @OrderBy
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "tbl_users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JsonView({UserEvent.View.DetailForAllUser.class, UserEvent.View.DetailForCommonUser.class})
+    @NotNull(message = ErrorMessages.FIELD_IS_REQUIRED, groups = {UserEvent.Validation.Update.class})
+    private Set<Role> roles = new HashSet<>();
+
+    @Transient
+    private Collection<? extends GrantedAuthority> authorities;
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return !isAccountExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return !isAccountLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return !isCredentialsExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    @Override
+    public User getCreateByUser() {
+        return createByUser;
+    }
+
+    @Override
+    public void setCreateByUser(User createByUser) {
+        this.createByUser = createByUser;
+    }
+
+    @Override
+    public User getUpdateByUser() {
+        return updateByUser;
+    }
+
+    @Override
+    public void setUpdateByUser(User updateByUser) {
+        this.updateByUser = updateByUser;
+    }
+
+    public Date getLastLoginDate() {
+        return lastLoginDate;
+    }
+
+    public void setLastLoginDate(Date lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isAccountExpired() {
+        return accountExpired;
+    }
+
+    public void setAccountExpired(boolean accountExpired) {
+        this.accountExpired = accountExpired;
+    }
+
+    public boolean isAccountLocked() {
+        return accountLocked;
+    }
+
+    public void setAccountLocked(boolean accountLocked) {
+        this.accountLocked = accountLocked;
+    }
+
+    public boolean isCredentialsExpired() {
+        return credentialsExpired;
+    }
+
+    public void setCredentialsExpired(boolean credentialsExpired) {
+        this.credentialsExpired = credentialsExpired;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean getEnabled() {
+        return enabled;
+    }
+
+    public String getCreateByUsername() {
+        return createByUsername;
+    }
+
+    public void setCreateByUsername(String createByUsername) {
+        this.createByUsername = createByUsername;
+    }
+
+    public String getUpdateByUsername() {
+        return updateByUsername;
+    }
+
+    public void setUpdateByUsername(String updateByUsername) {
+        this.updateByUsername = updateByUsername;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return accountExpired == user.accountExpired &&
+                accountLocked == user.accountLocked &&
+                credentialsExpired == user.credentialsExpired &&
+                enabled == user.enabled &&
+                Objects.equals(id, user.id) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(fullName, user.fullName) &&
+                Objects.equals(birthday, user.birthday) &&
+                Objects.equals(lastLoginDate, user.lastLoginDate) &&
+                Objects.equals(createByUser, user.createByUser) &&
+                Objects.equals(updateByUser, user.updateByUser) &&
+                Objects.equals(createByUsername, user.createByUsername) &&
+                Objects.equals(updateByUsername, user.updateByUsername) &&
+                Objects.equals(roles, user.roles) &&
+                Objects.equals(authorities, user.authorities);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, email, fullName, birthday, lastLoginDate, createByUser, updateByUser, createByUsername, updateByUsername, accountExpired, accountLocked, credentialsExpired, enabled, roles, authorities);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", birthday=" + birthday +
+                ", lastLoginDate=" + lastLoginDate +
+                ", createByUser=" + createByUser +
+                ", updateByUser=" + updateByUser +
+                ", createByUsername='" + createByUsername + '\'' +
+                ", updateByUsername='" + updateByUsername + '\'' +
+                ", accountExpired=" + accountExpired +
+                ", accountLocked=" + accountLocked +
+                ", credentialsExpired=" + credentialsExpired +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                ", authorities=" + authorities +
+                '}';
+    }
+}

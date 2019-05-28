@@ -1,0 +1,33 @@
+<div class="modal-content">
+    <form name="failDialogForm" class="form-horizontal" ng-submit="closeThisDialog()">
+        <div class="modal-header">
+            <row>
+                <div class="rem-right-1 dialog-header-text">
+                    <image width="70" height="70" ng-src="img/error-icon.png"></image>
+                </div>
+                <div class="dialog-header-text" style="color: red;">
+                    <h2>
+                        <span id="popup-header-message-label" ng-bind="ngDialogData.data.headerMessage | translate"></span>
+                    </h2>
+                </div>
+            </row>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <span id="popup-message-label" class="error-msg" ng-bind="ngDialogData.data.bodyMessage | translate"></span>
+                <ul class="error-msg">
+                	<li ng-repeat="item in ngDialogData.data.items" ng-bind="item.name | translate"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col-xs-12 text-right" >
+                    <button id="popup-ok-button" class="btn btn-primary" type="submit" style="margin: 5px"
+                        ng-bind="'OK' | translate"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

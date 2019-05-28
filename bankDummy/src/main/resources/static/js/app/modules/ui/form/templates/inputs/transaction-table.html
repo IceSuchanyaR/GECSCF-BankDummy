@@ -1,0 +1,17 @@
+<div class="full-w responsive-table">
+	<scf-layout-table component-config="$ctrl.model.transactionTableDisplay"
+		component-datas="$ctrl.model.transactionTableData"
+		current-page="$ctrl.model.pageModel.currentPage"
+		record-per-page="$ctrl.model.pageModel.pageSizeSelectModel">
+	</scf-layout-table>
+</div>
+<div class="col-12 filter-container text-right">
+	<span> <b ng-bind="$ctrl.model.splitePageTxt"
+		id="document-paging-label"></b> &nbsp;&nbsp; <scf-pagination
+			page-size-model="$ctrl.model.pageModel.pageSizeSelectModel"
+			total-page="$ctrl.model.pageModel.totalPage"
+			current-page="$ctrl.model.pageModel.currentPage"
+			page-size-list="$ctrl.model.pageSizeList"
+			page-action="$ctrl.model.searchDocument"></scf-pagination>
+	</span>
+</div>

@@ -1,0 +1,26 @@
+<ng-switch on="$ctrl.config.type" ng-if="$ctrl.show"> 
+
+  <label ng-switch-when="checkbox" class="checkbox-inline">
+     <input type="checkbox" ng-model="$ctrl.inputDisabled"
+	 ng-true-value="false" ng-false-value="true" ng-click="$ctrl.onCheckValue();"
+	 class="ng-valid ng-dirty ng-valid-parse ng-touched ng-empty"> 
+	 
+	 <span style="padding-bottom: 10px;" ng-bind="$ctrl.value | translate"></span>
+   </label>
+   
+   
+	<label ng-switch-when="radio" class="checkbox-inline"> 
+		<input type="radio" ng-change="$ctrl.change()"
+			class="radio-inline"
+			name="data-{{$ctrl.model}}" 
+			ng-model="$ctrl.model" ng-value="$ctrl.config.radioValue"/>
+		<span style="padding-bottom: 10px;"
+		 ng-bind="$ctrl.value | translate"></span>
+	</label>
+	
+   <label
+	ng-switch-default="true"
+	class="control-label"
+	ng-bind="(($ctrl.value | translate) + ($ctrl.suffixesValue | translate))"></label>
+	
+</ng-switch>

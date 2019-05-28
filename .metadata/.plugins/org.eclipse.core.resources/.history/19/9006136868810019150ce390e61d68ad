@@ -1,0 +1,4 @@
+<div class="checkbox">
+	<label class="checkbox-inline label-thin"> <input
+		type="checkbox" name="{{$ctrl.config.name}}" ng-disabled="$ctrl.disabled" ng-model="$ctrl.model" /> <span>{{$ctrl.config.displayValue | translate}}</span></label>
+</div>

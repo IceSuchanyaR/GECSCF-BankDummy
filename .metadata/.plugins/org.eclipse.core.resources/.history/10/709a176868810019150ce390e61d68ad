@@ -1,0 +1,32 @@
+<div class="tile-title-w-btn">
+	<h6>{{$ctrl.config.title | translate}}</h6>
+	<span class="error-msg control-label" ng-if="errors[config.name]">
+		{{'Roles is required' | translate}}. </span>
+	<p ng-if="!$ctrl.config.viewMode">
+		<button ng-disabled="$ctrl.addBtnDisabled" ng-if="$ctrl.config.showNewBtn" type="button" class="btn btn-default" ng-click="$ctrl.add()">{{
+			$ctrl.config.addButtonLabel | translate}}</button>
+	</p>
+</div>
+<div class="responsive-table">
+	<table class="table table-hover table-striped table-bordered"
+		cellspacing="0">
+		<thead>
+			<tr>
+				<th class="text-center"
+					ng-repeat="column in $ctrl.config.columns track by $index"
+					ng-bind="column.label | translate"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="record in $ctrl.model | orderBy: $ctrl.config.sortBy" 
+				context-menu="$ctrl.menuContext(record)" model="record">
+				<td ng-repeat="column in $ctrl.config.columns" column="column">
+					<gec-table-column data="record" config="column">
+					</gec-table-column>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<span class="error-msg"
+		ng-bind="errors[$ctrl.config.name].cause | translate:errors[$ctrl.config.name].params"></span>
+</div>

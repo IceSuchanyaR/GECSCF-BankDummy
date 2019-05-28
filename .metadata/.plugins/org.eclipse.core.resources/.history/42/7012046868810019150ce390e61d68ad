@@ -1,0 +1,33 @@
+page:
+  title: Update document status log
+  form:
+    rows:
+    - items:
+      - label: Update document status log
+    footer:
+      actions:
+      - label: Back
+        handler:
+          navigation:
+            to: back   
+      - label: Send
+        buttonType: primary
+        handler:
+          navigation:
+            to: back   
+            
+  table:
+    name: uploadLogDetails
+    autoSearch: true
+    fetching:
+      handler: getDocumentCheck
+    columns:
+    - type: rownumber
+      label: No
+      name: lineNo
+    - name: requestTime
+      label: Request time
+      type: datetime
+    - name: requestHeader
+      label: Request message
+      type: message

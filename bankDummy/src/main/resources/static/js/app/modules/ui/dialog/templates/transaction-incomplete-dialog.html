@@ -1,0 +1,56 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<div class="row text-warning">
+			<div class="col-md-2 col-sm-2">
+				<i class="icon fa fa-exclamation-triangle" aria-hidden="true"></i>
+			</div>
+			<div class="col-md-10 col-sm-10">
+				<h2>
+					<span id="approve-incomplete-header"
+						ng-bind="ngDialogData.data.prefixLanguageKey + '.popup.label.title' | translate"></span>
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-2 col-sm-2"></div>
+			<div class="col-md-10 col-sm-10">
+				<label ng-bind="ngDialogData.data.prefixLanguageKey + '.popup.label.transaction_no' | translate"></label> :&nbsp;<span
+					id="incomplete-transaction-no-label"
+					ng-bind="ngDialogData.data.transactionNo"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-sm-2"></div>
+			<div class="col-md-10 col-sm-10">
+				<label ng-bind="ngDialogData.data.prefixLanguageKey + '.popup.label.reason' | translate"></label> :&nbsp;<span
+					id="incomplete-reason-label"
+					ng-bind="ngDialogData.data.result | translate"></span>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="row">
+			<div class="col-xs-12 text-right">
+				<scf-button id="popup-back-button" class="popup-button"
+					data-dismiss="modal" ng-bind="'Back' | translate"
+					ng-click="closeThisDialog(true);ngDialogData.data.backPage()"></scf-button>
+				<label class="row-space-btn"></label>
+				<scf-button id="incomplete-re-check-button" class="popup-button"
+					data-dismiss="modal" ng-bind="'Recheck' | translate"
+					ng-click="closeThisDialog(true);ngDialogData.data.recheck(ngDialogData.data.transaction , ngDialogData)"></scf-button>
+				<label class="row-space-btn"></label>
+				<scf-button id="view-recent-button"
+					class="popup-button hidden-sm hidden-xs" data-dismiss="modal"
+					ng-click="closeThisDialog(true);ngDialogData.data.viewRecent()"
+					ng-bind="'View Recent' | translate"></scf-button>
+				<label class="row-space-btn"></label>
+				<scf-button id="view-history-button"
+					class="popup-button hidden-sm hidden-xs" data-dismiss="modal"
+					ng-click="closeThisDialog(true);ngDialogData.data.viewHistory()"
+					ng-bind="'View History' | translate"></scf-button>
+			</div>
+		</div>
+	</div>
+</div>

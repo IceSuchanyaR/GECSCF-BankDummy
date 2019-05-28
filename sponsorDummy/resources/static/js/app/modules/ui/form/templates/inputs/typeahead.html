@@ -1,0 +1,5 @@
+<input type="text" ng-disabled="$ctrl.disabled"
+	placeholder="{{$ctrl.config.placeholder | translate}}" class="form-control"
+	uib-typeahead="data as data.label for data in query($viewValue)"
+	autocomplete="off" ng-model="$ctrl.model" convert-to-string="true" ng-blur="onBlur($ctrl.model)"
+	name="{{name}}">

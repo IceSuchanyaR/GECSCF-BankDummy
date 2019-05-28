@@ -1,0 +1,263 @@
+<style type="text/css">
+.form-control {
+	width: 150%;
+}
+
+.form-horizontal .control-label {
+	width: 190px;
+}
+</style>
+<body>
+
+	<div class="app-title">
+		<span>
+			<h1>Log Transaction Core Bank Dummy - View</h1>
+		</span>
+		<span>
+			<button ui-sref="log_transaction_list" class="btn btn-danger btn-sx "
+				title="Back">Back</button>
+		</span>
+	</div>
+	<div class="title panel-body body-white">
+		<form class="form-horizontal">
+			<div class="col-md-12"
+				ng-hide="$ctrlLogView.view.logType == 'ENQUIRY_ACCOUNT_BALANCE'||
+				$ctrlLogView.view.logType == 'ENQUIRY_CREDIT_LIMIT'">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Service Type</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">{{$ctrlLogView.view.logTypeDisplay}}</div>
+					<label class="control-label col-6 col-md-3 in-text-right">Transaction No</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">{{$ctrlLogView.view.transactionNo}}</div>
+				</div>
+			</div>
+			<div class="col-md-12"
+				ng-show="$ctrlLogView.view.logType == 'ENQUIRY_ACCOUNT_BALANCE'||
+				$ctrlLogView.view.logType == 'ENQUIRY_CREDIT_LIMIT'">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Service Type</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">{{$ctrlLogView.view.logTypeDisplay}}</div>
+					<label class="control-label col-6 col-md-3 in-text-right">Bank Code</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.bankCode}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="col-md-12"
+				ng-hide="$ctrlLogView.view.logType == 'ENQUIRY_ACCOUNT_BALANCE'||
+				$ctrlLogView.view.logType == 'ENQUIRY_CREDIT_LIMIT'">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Bank Transaction
+						No</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.bankTransactionNoView}}</div>
+					<label class="control-label col-6 col-md-3 in-text-right">Bank Code</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.bankCode}}</div>
+				</div>
+			</div>
+			<div class="form-group" ng-hide="$ctrlLogView.view.logType ==
+				'ENQUIRY_ACCOUNT_BALANCE'|| $ctrlLogView.view.logType ==
+				'ENQUIRY_CREDIT_LIMIT'">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="col-md-12">
+				<div class="row">
+
+					<label class="control-label col-6 col-md-3 in-text-right">Transaction
+						Status</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.transactionStatus}}</div>
+
+					<label class="control-label col-6 col-md-3 in-text-right">Failure Reason
+						Code</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.failureReasonCodeView}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="col-md-12"
+				ng-hide="$ctrlLogView.view.logType == 'ENQUIRY_ACCOUNT_BALANCE'||
+				$ctrlLogView.view.logType == 'ENQUIRY_CREDIT_LIMIT'">
+				<div class="row">
+
+					<label class="control-label col-6 col-md-3 in-text-right">Failure Reason</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.failureReasonView}}</div>
+
+					<label class="control-label col-6 col-md-3 in-text-right">Transaction
+						Amount</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.transactionAmount | number:2}}</div>
+				</div>
+			</div>
+			<div class="col-md-12"
+				ng-show="$ctrlLogView.view.logType == 'ENQUIRY_ACCOUNT_BALANCE'||
+				$ctrlLogView.view.logType == 'ENQUIRY_CREDIT_LIMIT'">
+				<div class="row">
+
+					<label class="control-label col-6 col-md-3 in-text-right">Failure Reason</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.failureReasonView}}</div>
+
+					<label class="control-label col-6 col-md-3 in-text-right">Currency Code</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.currencyCode}}</div>
+				</div>
+			</div>
+			<div class="form-group" ng-hide="$ctrlLogView.view.logType ==
+				'ENQUIRY_ACCOUNT_BALANCE'|| $ctrlLogView.view.logType ==
+				'ENQUIRY_CREDIT_LIMIT'">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="col-md-12"
+				ng-hide="$ctrlLogView.view.logType == 'ENQUIRY_ACCOUNT_BALANCE'||
+				$ctrlLogView.view.logType == 'ENQUIRY_CREDIT_LIMIT'">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Currency Code</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.currencyCode}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="col-md-12"
+				ng-show="$ctrlLogView.view.logType == 'ENQUIRY_DRAWDOWN' ||
+				$ctrlLogView.view.logType == 'DRAWDOWN'">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Sponsor Code</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.sponsorCode}}</div>
+
+					<label class="control-label col-6 col-md-3 in-text-right">Sponsor Credit
+						Account No </label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.sponsorCreditAccountNo}}</div>
+				</div>
+			</div>
+			<div class="form-group" ng-show="$ctrlLogView.view.logType ==
+				'ENQUIRY_DRAWDOWN' || $ctrlLogView.view.logType == 'DRAWDOWN'">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="col-md-12"
+				ng-show="$ctrlLogView.view.logType == 'ENQUIRY_DRAWDOWN' ||
+				$ctrlLogView.view.logType == 'DRAWDOWN'">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Sponsor Credit
+						Limit
+						AccountType</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.sponsorCreditLimitAccountTypeDisplay}}</div>
+					<label class="control-label col-6 col-md-3 in-text-right">Sponsor Credit
+						Limit
+						CustomerID</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.sponsorCreditLimitCustomerID}}</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-show="$ctrlLogView.view.logType ==
+				'ENQUIRY_DRAWDOWN' || $ctrlLogView.view.logType == 'DRAWDOWN'">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="col-md-12">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Source AccountNo</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.sourceAccountNo}}</div>
+					<label class="control-label col-6 col-md-3 in-text-right">Source
+						AccountType</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.sourceAccountTypeDisplay}}</div>
+
+				</div>
+			</div>
+			<div class="row">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="col-md-12">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Source CustomerID</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.sourceCustomerID}}</div>
+					<label class="control-label col-6 col-md-3 in-text-right"
+						ng-hide="$ctrlLogView.view.logType == 'ENQUIRY_ACCOUNT_BALANCE' ||
+						$ctrlLogView.view.logType == 'ENQUIRY_CREDIT_LIMIT'">Destination
+						AccountNo</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.destinationAccountNo}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="col-md-12"
+				ng-hide="$ctrlLogView.view.logType == 'ENQUIRY_ACCOUNT_BALANCE' ||
+				$ctrlLogView.view.logType == 'ENQUIRY_CREDIT_LIMIT'">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Destination
+						AccountType</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.destinationAccountTypeDisplay}}</div>
+					<label class="control-label col-6 col-md-3 in-text-right">Destination
+						CustomerID</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.destinationCustomerID}}</div>
+				</div>
+			</div>
+			<div class="form-group" ng-hide="$ctrlLogView.view.logType ==
+				'ENQUIRY_ACCOUNT_BALANCE' || $ctrlLogView.view.logType ==
+				'ENQUIRY_CREDIT_LIMIT'">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="col-md-12"
+				ng-show="$ctrlLogView.view.logType == 'ENQUIRY_DRAWDOWN' ||
+				$ctrlLogView.view.logType == 'DRAWDOWN'">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Maturity Date</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.maturityDate}}</div>
+					<label class="control-label col-6 col-md-3 in-text-right">Document Amount</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.documentAmount}}</div>
+				</div>
+			</div>
+			<div class="form-group" ng-show="$ctrlLogView.view.logType ==
+				'ENQUIRY_DRAWDOWN' || $ctrlLogView.view.logType == 'DRAWDOWN'">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="col-md-12"
+				ng-show="$ctrlLogView.view.logType == 'ENQUIRY_DRAWDOWN' ||
+				$ctrlLogView.view.logType == 'DRAWDOWN'">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Finance Percent</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.financePercent}}</div>
+				</div>
+			</div>
+			<div class="form-group" ng-show="$ctrlLogView.view.logType ==
+				'ENQUIRY_DRAWDOWN' || $ctrlLogView.view.logType == 'DRAWDOWN'">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="col-md-12">
+				<div class="row">
+					<label class="control-label col-6 col-md-3 in-text-right">Request Time</label>
+					<div class="col-6 col-md-3" style="padding-bottom: 7px;">
+						{{$ctrlLogView.view.updateTime}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<hr class="col-md-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+		</form>
+	</div>
+
+</body>

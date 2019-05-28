@@ -1,0 +1,138 @@
+<style type="text/css">
+.form-control {
+	width: 150%;
+}
+
+.form-horizontal .control-label {
+	width: 190px;
+}
+</style>
+
+<body>
+	<div class="app-title">
+		<h1>Mapping Response Exception - View</h1>
+		<button ui-sref="mapping_exception_list"
+			class="btn btn-danger btn-sx"
+			title="Back">Back</button>
+	</div>
+	<div class="title panel-body body-white-rem-hori-1">
+		<form class="form-horizontal">
+
+			<div class="form-group row">
+				<label for="bankCode" class="control-label col-4 in-text-right"> Bank
+					Code </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.bankCode}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="accountNo" class="control-label col-4 in-text-right">
+					Account No </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.accountNo}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="selectServiceGroup" class="control-label col-4 in-text-right">
+					Service Type </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.serviceTypeDisplay}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="transactionStatus" class="control-label col-4 in-text-right">
+					Transaction Status </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.transactionStatusDisplay}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="failureReasonCode" class="control-label col-4 in-text-right">
+					Failure Reason Code </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.failureReasonCode}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="failureReason" class="control-label col-4 in-text-right">
+					Failure Reason </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.failureReason}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="delay" class="control-label col-4 in-text-right"> Delay </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.delay}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="status" class="control-label col-4 in-text-right"> Status </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.statusDisplay}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="status" class="control-label col-4 in-text-right"> Create
+					Time </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.createTimeDisplay}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="status" class="control-label col-4 in-text-right"> Create
+					By </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.createByUser.username}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="status" class="control-label col-4 in-text-right"> Update
+					Time </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.updateTimeDisplay}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="status" class="control-label col-4 in-text-right"> Update
+					By </label>
+				<div class="col-8" style="padding-bottom: 7px;">{{$ctrlExceptionView.view.updateByUser.username}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-md-11 " style="border-top: dotted 0.5px;" />
+			</div>
+		</form>
+	</div>
+</body>

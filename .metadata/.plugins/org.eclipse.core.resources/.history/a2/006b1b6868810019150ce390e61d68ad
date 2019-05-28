@@ -1,0 +1,10 @@
+<div class="radio">
+	<label name="{{$ctrl.config.name}}"> <input type="radio"
+		class="radio-inline" ng-disabled="$ctrl.disabled"
+		ng-model="$ctrl.radioModel" ng-value="{{$ctrl.radioValue}}"/>
+		{{opt.label | translate}}
+	</label> <input class="form-control" type="text" ng-model="$ctrl.inputModel"
+		ng-disabled="$ctrl.disabled"
+		placeholder="{{$ctrl.config.placeholder | translate}}"
+		name="{{$ctrl.config.name}}">
+</div>

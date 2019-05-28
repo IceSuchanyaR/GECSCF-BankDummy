@@ -1,0 +1,75 @@
+<div>
+	<div id="wrapper">
+		<div id="bottom-sticker" class="frame-page-control">
+			<div ng-show="$ctrl.model.displaySearchResult">
+				<div class="row">
+					<form-item> <label id="transaction-amount-label"
+						class="control-label" ng-bind="'Transaction amount' | translate"></label>
+					:
+					<div>
+						<label class="control-label label-thin"
+							ng-bind="'THB' | translate"></label>&nbsp; <label
+							id="transaction-amount-value-label"
+							class="control-label label-thin"
+							ng-bind="$ctrl.model.transactionAmount | number: 2"
+							hilight-negative="true"></label>
+					</div>
+					</form-item>
+					<form-item> <label id="pre-drawdown-percentage-label"
+						class="control-label"
+						ng-bind="'Pre-drawdown percentage' | translate"></label> :
+					<div>
+						<label id="pre-drawdown-percentage-value-label"
+							class="control-label label-thin"
+							ng-bind="$ctrl.model.getPrePercentageDrawdown() | number: 2"
+							hilight-negative="true"></label>%
+					</div>
+					</form-item>
+				</div>
+				<div class="row">
+					<form-item> <label id="loan-account-label"
+						class="control-label" ng-bind="'Loan account' | translate"></label>
+					: <scf-dropdown-account id="loan-account-dropdown"
+						ng-change="$ctrl.model.accountChange()"
+						ng-model="$ctrl.model.accountId"
+						convert-to-number="true" component-data="$ctrl.model.accountDropDown"></scf-dropdown-account>
+					</form-item>
+					<form-item> <label id="available-label"
+						class="control-label" ng-bind="'Available' | translate"></label> :
+					<div>
+						<label class="control-label label-thin"
+							ng-bind="'THB' | translate"></label>&nbsp; <label
+							id="available-value-label" class="control-label label-thin"
+							ng-bind="$ctrl.model.accountData.supplierAvailableAmount| number: 2"
+							hilight-negative="true"></label>&nbsp; <label
+							id="interest-rate-value-label" class="control-label label-thin"
+							ng-hide="$ctrl.model.accountData.accountType == 'OVERDRAFT'">
+							<span>(Int.</span> <span
+							ng-bind="$ctrl.model.accountData.interestRate"></span> <span>)</span>
+						</label>
+						<scf-button id="enquiry-account-button"
+							class="btn-default gec-btn-action"
+							title="Enquiry" ng-click="$ctrl.model.enquiryAvailableBalance()">
+						<i class="fa fa-repeat" aria-hidden="true"></i> </scf-button>
+						(Updated: <span id="account-updated-time-value-label"
+							ng-bind="$ctrl.model.accountData.accountUpdatedTime | date: 'dd/MM/yyyy HH:mm:ss' : 'UTC+0700'"></span>)
+					</div>
+					</form-item>
+				</div>
+				<div class="row">
+					<form-item> <label id="transaction-date-label"
+						class="control-label" ng-bind="'Transaction date' | translate"></label>
+					: <scf-date-picker text-id="transaction-date-textbox"
+						ng-readonly="true"
+						text-model="$ctrl.model.transactionDate"
+						date-format="dd/MM/yyyy" is-open="$ctrl.model.openTransactionDate"
+						available-date="$ctrl.model.getTransactionDateList()"
+						available-date-option="true"
+						open-calendar-action="$ctrl.model.openCalendarTransactionDate()"
+						ng-disabled="$ctrl.model.isTransactionDateDisabled()"
+						button-id="transaction-date-calendar-button"> </scf-date-picker> </form-item>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

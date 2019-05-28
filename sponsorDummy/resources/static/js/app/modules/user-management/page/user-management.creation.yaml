@@ -1,0 +1,65 @@
+page:
+  title: User Management - New
+  form:
+    rows:
+    - items:
+      - name: username
+        label: Username
+        type: text
+        maxlength: 255
+        placeholder: Enter username
+        required: true
+      - name: role
+        label: Role
+        type: dropdown
+        required: true
+        options:
+        - label: Please select
+          value: null
+        - label: Common User
+          value: COMMON_USER
+        - label: Sponsor User
+          value: SPONSOR_USER
+        - label: Bank User
+          value: BANK_USER
+
+      - name: fullName
+        required: true
+        type: text
+        label: Full Name
+        maxlength: 255
+        placeholder: Enter full name
+      - name: email
+        type: email
+        maxlength: 255
+        required: true
+        label: E-mail
+        placeholder: Enter e-mail
+
+      - name: birthday
+        type: calendar
+        label: Birthday
+        max: '[CurrentDate]'
+        disabled: false
+        required: true
+
+    submission:
+      confirmation:
+        message: Confirm save?
+        handler: createUser
+        success:
+          message: Create user success.
+          handler:
+            navigation:
+              to: back
+              reload: true
+
+    footer:
+      actions:
+      - label: Back
+        handler:
+          navigation:
+            to: back   
+      - label: Save
+        type: submit
+        buttonType: primary       

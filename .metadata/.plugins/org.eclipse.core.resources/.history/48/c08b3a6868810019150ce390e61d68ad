@@ -1,0 +1,104 @@
+<div class="modal-content">
+	<form name="successDialogForm" class="form-horizontal"
+		ng-submit="closeThisDialog();">
+		<div class="modal-header">
+			<row>
+				<div class="rem-right-1">
+					<image width="70" height="70" ng-src="img/success-icon.png"></image>
+				</div>
+				<h2>
+					<span id="popup-header-message-label"
+						class="gec-pop-up-font-size-green"
+						ng-bind="ngDialogData.data.headerMessage | translate">Approve
+						success</span>
+				</h2>
+			</row>
+		</div>
+		<div class="modal-body">
+			<div ng-show="ngDialogData.data.mode == 'transactionComplete'">
+				<div class="form-group">
+					<label class="gec-pop-up-font-size"
+						ng-bind="'Transaction no.' | translate">Transaction No. :</label>
+					<div>
+						<span id="transaction-no-label" class="gec-pop-up-font-size"
+							ng-bind="ngDialogData.data.bodyMessage.transactionNo"></span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label ng-bind="'Result' | translate"></label> :
+					<row>
+						<span id="result-label"
+							ng-bind="ngDialogData.data.bodyMessage.statusMessageKey | translate">
+						</span>
+						<a id="evident-form-button" style="cursor: pointer;"
+							ng-click="ngDialogData.data.printEvidenceFormAction()"
+							ng-show="ngDialogData.data.canPrintEvidence" title="Print">
+							<i class="fa fa-print" aria-hidden="true"></i></a>
+					</row>
+				</div>
+			</div>
+			<div class="form-group" ng-show="ngDialogData.data.mode == 'transaction'">
+				<label class="gec-pop-up-font-size"
+					ng-bind="'Transaction no.' | translate">Transaction No. :</label>
+				<div>
+					<span id="popup-transaction-no-value-label" class="gec-pop-up-font-size"
+						ng-bind="ngDialogData.data.bodyMessage"></span>
+				</div>
+			</div>
+			<div class="form-group" ng-show="ngDialogData.data.mode == undefined ||
+				ngDialogData.data.mode == null">
+				<div>
+					<span id="popup-message-label" class="error-msg"
+						ng-bind="ngDialogData.data.bodyMessage"></span>
+				</div>
+			</div>
+		</div>
+		<div ng-if="ngDialogData.data.mode == 'transaction' ||
+			ngDialogData.data.mode == 'transactionComplete'" class="modal-footer">
+			<div class="text-right">
+				<scf-button id="popup-back-button" class="popup-button"
+					data-dismiss="modal" ng-bind="'Back' | translate"
+					ng-hide="(ngDialogData.data.hideBackButton != undefined &&
+					ngDialogData.data.hideBackButton == true)"
+					ng-click="closeThisDialog(false);ngDialogData.data.backAndReset()"></scf-button>
+				<label class="row-space-btn"></label>
+				<scf-button id="popup-view-recent-button" class="popup-button"
+					data-dismiss="modal"
+					ng-hide="(ngDialogData.data.hideViewRecentButton != undefined &&
+					ngDialogData.data.hideViewRecentButton == true)"
+					ng-click="closeThisDialog(false);ngDialogData.data.viewRecent()"
+					ng-bind="'View recent' | translate"></scf-button>
+				<label class="row-space-btn"></label>
+				<scf-button id="popup-view-history-button" class="popup-button"
+					data-dismiss="modal"
+					ng-hide="(ngDialogData.data.hideViewHistoryButton != undefined &&
+					ngDialogData.data.hideViewHistoryButton == true)"
+					ng-click="closeThisDialog(false);ngDialogData.data.viewHistory()"
+					ng-bind="'View history' | translate"></scf-button>
+				<label class="row-space-btn"></label>
+				<scf-button id="popup-ok-button" class="popup-button btn-primary"
+					data-dismiss="modal"
+					ng-show="(ngDialogData.data.showOkButton != undefined &&
+					ngDialogData.data.showOkButton == true)"
+					ng-click="closeThisDialog(false);ngDialogData.data.viewHistory()"
+					ng-bind="'OK' | translate"></scf-button>
+			</div>
+		</div>
+		<div ng-if="ngDialogData.data.mode == undefined || ngDialogData.data.mode ==
+			null" class="modal-footer">
+			<div class="text-right" ng-if="ngDialogData.buttons" ng-repeat="button in
+				ngDialogData.buttons track by $index">
+				<scf-button
+					id="popup-{{button.id}}" class="popup-button"
+					ng-bind="button.label | translate" ng-click="button.action()"></scf-button>
+				<label class="row-space-btn"></label>
+			</div>
+			<div class="text-right" ng-if="!ngDialogData.buttons">
+				<scf-button id="popup-ok-button" class="popup-button btn-primary"
+					type="submit"
+					ng-bind="'OK' | translate"></scf-button>
+			</div>
+		</div>
+	</form>
+</div>

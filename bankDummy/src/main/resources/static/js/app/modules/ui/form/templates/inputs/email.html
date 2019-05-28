@@ -1,0 +1,4 @@
+<input class="form-control" type="text" ng-model="$ctrl.model" maxlength="{{$ctrl.config.maxlength}}"
+	ng-disabled="$ctrl.disabled" placeholder="{{$ctrl.config.placeholder | translate}}"
+	ng-pattern="/^[A-Za-z0-9._]+@[A-Za-z]+\.[A-Za-z.]{2,5}$/"
+	name="{{$ctrl.config.name}}">

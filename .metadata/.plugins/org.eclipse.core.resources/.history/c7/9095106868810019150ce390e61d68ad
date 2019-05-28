@@ -1,0 +1,111 @@
+<gec-label ng-if="$ctrl.show &amp;&amp; config.label"
+	input-disabled="$ctrl.disabled" config="config.label" suffixes-config = "config.suffixesLabel"
+	ng-disabled="$ctrl.disabled" model="$ctrl.data[config.label.model]">
+
+</gec-label>
+<div ng-switch="config.type" ng-if="$ctrl.show">
+
+	<gec-input-text ng-switch-when="text" ng-disabled="$ctrl.disabled"
+		model="$ctrl.data[config.name]" config="config"></gec-input-text>
+
+	<gec-input-number ng-switch-when="number" ng-disabled="$ctrl.disabled"
+		model="$ctrl.data[config.name]" config="config"></gec-input-number>
+
+	<gec-input-password ng-switch-when="password"
+		ng-disabled="$ctrl.disabled" model="$ctrl.data[config.name]"
+		config="config"></gec-input-password>
+
+	<gec-input-email ng-switch-when="email" ng-disabled="$ctrl.disabled"
+		model="$ctrl.data[config.name]" config="config"></gec-input-email>
+
+	<gec-textarea ng-switch-when="textarea" ng-disabled="$ctrl.disabled"
+		model="$ctrl.data[config.name]" config="config"></gec-textarea>
+
+	<gec-calendar ng-switch-when="calendar" ng-disabled="$ctrl.disabled"
+		model="$ctrl.data[config.name]" config="config"
+		max="$ctrl.data[config.max]" min="$ctrl.data[config.min]"></gec-calendar>
+
+	<gec-value-time-input ng-switch-when="time"
+		ng-disabled="$ctrl.disabled" model="$ctrl.data[config.name]"
+		config="config"></gec-value-time-input>
+
+	<gec-value-time-array-input ng-switch-when="timearray"
+		ng-disabled="$ctrl.disabled" model="$ctrl.data[config.name]"
+		config="config"></gec-value-time-array-input>
+
+	<gec-typeahead ng-switch-when="typeahead" ng-disabled="$ctrl.disabled"
+		model="$ctrl.data[config.name]" form-data="$ctrl.data" config="config"></gec-typeahead>
+
+	<gec-radio ng-switch-when="radio" model="$ctrl.data[config.name]"
+		config="config" ng-disabled="$ctrl.disabled"> </gec-radio>
+
+	<gec-checkbox ng-switch-when="checkbox" model="$ctrl.data[config.name]"
+		config="config" ng-disabled="$ctrl.disabled"> </gec-checkbox>
+
+	<gec-checklist ng-switch-when="checklist"
+		model="$ctrl.data[config.name]" datas="$ctrl.data" config="config"
+		ng-disabled="$ctrl.disabled"></gec-checklist>
+
+	<gec-dropdown ng-switch-when="dropdown" ng-disabled="$ctrl.disabled"
+		model="$ctrl.data[config.name]" config="config"> </gec-dropdown>
+
+	<gec-checkboxes ng-switch-when="checkboxes"
+		ng-disabled="$ctrl.disabled" model="$ctrl.data[config.name]"
+		config="config"> </gec-checkboxes>
+
+	<gec-account-no ng-switch-when="account-no"
+		model="$ctrl.data[config.name]" ng-disabled="$ctrl.disabled">
+	</gec-account-no>
+
+	<gec-value-number ng-switch-when="labelnumber"
+		model="$ctrl.data[config.name]" config="config"> </gec-value-number>
+
+	<gec-value-text ng-switch-when="label" model="$ctrl.data[config.name]"
+		config="config"> </gec-value-text>
+
+	<gec-value-amount ng-switch-when="labelamount"
+		model="$ctrl.data[config.name]" config="config"> </gec-value-amount>
+
+	<gec-value-datetime ng-switch-when="datetime"
+		model="$ctrl.data[config.name]" config="config">
+	</gec-value-datetime>
+
+	<gec-account-display ng-switch-when="account-display"
+		ng-disabled="$ctrl.disabled" model="$ctrl.data[config.name]"
+		form-data="$ctrl.data" config="config"> </gec-account-display>
+
+	<gec-input-dialog ng-switch-when="input-dialog"
+		ng-disabled="$ctrl.disabled" model="$ctrl.data[config.name]"
+		config="config"> </gec-input-dialog>
+
+	<gec-username-display ng-switch-when="username" config="config"></gec-username-display>
+
+	<gec-image-form ng-switch-when="image-form" config="config"></gec-image-form>
+
+	<gec-logo-action ng-switch-when="logo-action"
+		ng-disabled="$ctrl.disabled" model="$ctrl.data[config.name]"
+		data="$ctrl.data" config="config"> </gec-logo-action>
+
+	<gec-config-button ng-switch-when="config-button"
+		ng-disabled="$ctrl.disabled" model="$ctrl.data" config="config">
+	</gec-config-button>
+
+	<gec-file-upload config="config" ng-switch-when="file-upload"
+		file-upload="$ctrl.data[config.name]" ng-disabled="$ctrl.disabled"></gec-file-upload>
+
+	<gec-credit-term-multiple-checkbox
+		ng-switch-when="credit-term-multile-checkbox"
+		ng-disabled="$ctrl.disabled" model="$ctrl.data[config.name]"
+		config="config"> </gec-credit-term-multiple-checkbox>
+
+	<gec-actions ng-switch-when="actions" ng-disabled="$ctrl.disabled"
+		config="config"> </gec-actions>
+
+	<div ng-switch-default></div>
+</div>
+<small ng-if="$ctrl.show &amp;&amp; config.description"
+	class="no-margin" id="{{config.name}}-description"
+	ng-bind="config.description | translate"></small>
+<span ng-if="$ctrl.show &amp;&amp; errors[config.name]"
+	class="error-msg"
+	ng-bind="errors[config.name].cause | translate:errors[config.name].params "></span>

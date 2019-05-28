@@ -1,0 +1,59 @@
+<div>
+	<div id="wrapper">
+		<div class="tile-body">
+			<div class="frame-page-control">
+				<div class="col-md-12 text-right filter-container">
+					<button type="button" class="btn" id="filter-button"
+						data-toggle="collapse" data-target="#advance-search">
+						<i class="fa fa-fw fa-lg fa-filter"></i> {{'Filter' | translate}}
+					</button>
+				</div>
+				<div id="advance-search" class="collapse show">
+					<form name="createForm" class="form-horizontal" autocomplete="off">
+						<div class="row">
+							<form-item> <label for="buyer"
+								id="sponsor-code-label" class="control-label">{{'Buyer'
+								| translate}} :</label>
+							<div>
+								<label id="buyer-value-label" class="control-label label-thin"
+									ng-bind="$ctrl.model.buyerName"></label>
+							</div>
+							</form-item>
+						</div>
+						<div class="row">
+							<form-item> <label for="dealer"
+								id="supplier-code-label" class="control-label">{{'Supplier
+								code' | translate}} :</label> <scf-dropdown id="supplier-code-dropdown"
+								ng-change="$ctrl.model.supplierCodeChange()"
+								ng-model="$ctrl.model.criteria.customerCode"
+								component-data="$ctrl.model.customerCodes"></scf-dropdown> </form-item>
+							<form-item> <label for="paymentDate"
+								id="sponsor-payment-date-label" class="control-label"
+								ng-bind="'Buyer payment date :' | translate">{{'Buyer
+								payment date' | translate}} :</label> <scf-date-picker
+								text-id="sponsor-payment-date-textbox" ng-readonly="true"
+								text-model="$ctrl.model.criteria.sponsorPaymentDate" date-format="dd/MM/yyyy"
+								is-open="$ctrl.model.openSponsorPaymentDate"
+								available-date="$ctrl.model.getSponsorPaymentDateList()"
+								available-date-option="true"
+								open-calendar-action="$ctrl.model.openCalendarSponsorPaymentDate()"
+								ng-disabled="$ctrl.model.isSponsorPaymentDateDisabled()"
+								button-id="sponsor-payment-date-calendar-button">
+							</scf-date-picker> </form-item>
+						</div>
+						<filter-footer-buttons> <scf-button
+							id="search-button" ng-click="$ctrl.model.searchDocument()"
+							class="col
+								footer-btn-style
+								btn-primary">{{'Search'
+						| translate}}</scf-button> <label class="row-space-btn"></label> <scf-button
+							type="submit" id="clear-button" class="col
+								footer-btn-style btn"
+							ng-click="$ctrl.model.clearCriteria();" ng-bind="'Clear' | translate">{{'Clear'
+						| translate}}</scf-button> </filter-footer-buttons>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

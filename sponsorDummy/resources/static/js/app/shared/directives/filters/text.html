@@ -1,0 +1,6 @@
+<label class="control-label" for="{{config.name}}"
+	ng-bind="config.label"></label>&nbsp;:
+<input class="form-control" type="text" ng-model="model[config.name]" ng-disabled="config.disabled"
+	placeholder="{{config.placeholder}}" name="{{config.name}}">
+<span ng-if="errors[config.name]" class="error-msg"
+	ng-bind="errors[config.name]"></span>

@@ -1,0 +1,41 @@
+<div class="tile-title-w-btn">
+	<h3 class="title" ng-bind="$ctrl.config.title | translate"></h3>
+	<p>
+		<button type="button" class="btn collapsed"
+			id="{{$ctrl.config.name}}-filter-button" data-toggle="collapse"
+			data-target="#{{$ctrl.config.name}}-filter-panel" ng-click="$ctrl.setDefault()">
+			<i class="fa fa-fw fa-lg fa-filter"></i> {{'Filter' | translate}}
+		</button>
+
+		<gec-button-action ng-repeat="action in $ctrl.config.actions"
+			config="action" handler="action.handler"> </gec-button-action>
+
+	</p>
+</div>
+<div class="tile-body collapse" id="{{$ctrl.config.name}}-filter-panel">
+	<gec-form config="$ctrl.config.form" name="$ctrl.config.name"
+		model="$ctrl.criteria" data="$ctrl.pageData">
+		
+	<div class="row-fit form-group justify-content-center">
+		<button
+			class="col-lg-2 col-md-3 col no-padding-horizontal btn btn-primary"
+			type="submit">
+			<i class="fa fa-fw fa-lg fa-search"></i>{{'Search' | translate}}
+		</button>
+		&nbsp;&nbsp;
+		<button class="col-lg-2 col-md-3 col no-padding-horizontal btn"
+			type="button" ng-click="$ctrl.clear($ctrl.criteria)">
+			<i class="fa fa-fw fa-lg fa-eraser"></i>{{'Clear' | translate}}
+		</button>
+	</div>
+	</gec-form>
+</div>
+<div class="tile-body" id="{{$ctrl.config.name}}-table-panel" ng-if="$ctrl.config.table">
+	<gec-data-table config="$ctrl.config.table" criteria="$ctrl.criteria"
+		page-data="$ctrl.pageData"> <gec-table-pagination></gec-table-pagination>
+	</gec-data-table>
+</div>
+<div class="tile-body" id="{{$ctrl.config.name}}-table-summary-panel" ng-if="$ctrl.config.summary">
+	<gec-data-summary config="$ctrl.config.summary" criteria="$ctrl.criteria">
+	</gec-data-summary>
+</div>

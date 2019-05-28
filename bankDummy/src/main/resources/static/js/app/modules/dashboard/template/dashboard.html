@@ -1,0 +1,15 @@
+
+<body>
+	<div class="app-title">
+		<h1 class="page-header">Dummy Dashboard Selection</h1>
+	</div>
+
+	<div class="title panel-body body-white row">
+		<div ng-repeat="module in $ctrl.modules track by $index"
+			style="padding: 10px; width: 50%">
+			<a class="btn btn-outline-secondary" ng-click="$ctrl.onSelectModule(module);"
+				href="#/{{module.list[0].uri}}" role="button"
+				style="height: 100%; width: 100%;"><span style="margin: auto">{{module.title}}</span></a>
+		</div>
+	</div>
+</body>

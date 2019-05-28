@@ -1,0 +1,14 @@
+[
+   {
+      "sponsorId": "PTT",
+      "sponsorName": "PTT",
+      "serviceName": "Upload document",
+      "serviceType": "UPLOAD"
+   },
+   {
+      "sponsorId": "PTT",
+      "sponsorName": "PTT",
+      "serviceName": "Check document status",
+      "serviceType": "CHECK"
+   }
+]

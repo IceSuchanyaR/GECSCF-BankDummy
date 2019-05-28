@@ -1,0 +1,22 @@
+page:
+  title:  Sponsor Selection
+  filter:
+    form:
+      rows:
+      - items:
+        - name: sponsorName
+          type: text
+          label: Sponsor name
+          placeholder: Enter sponsor name
+    table:
+      name: buyer-code-table
+      type: logo-list 
+      autoSearch: true
+      logoField: memberLogo
+      nameField: memberName
+      fetching:
+        handler: getSponsors
+      onSelect:
+        handler:
+          navigation:
+            to: sponsors.services

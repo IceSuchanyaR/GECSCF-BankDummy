@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Main CSS-->
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<!-- Font-icon css-->
+		<link rel="stylesheet" type="text/css"
+			href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script th:src="@{/js/addition-libs.js}"
+			src="../static/js/addition-libs.js"></script>
+		<link th:href="@{/css/loading-overlay.css}"
+			href="../static/css/loading-overlay.css" rel="stylesheet" />
+		<script th:src="@{/js/plugins/loading-overlay.js}"
+			src="../static/js/plugins/loading-overlay.js"></script>
+		<title>GECSCF Web Test</title>
+		<link rel="icon" type="image/png" href="https://newweb.gec.co.th/img/gec-logo.png"/>
+	</head>
+	<body ng-app="login">
+		<section class="material-half-bg">
+			<div class="cover"></div>
+		</section>
+		<section class="login-content">
+			<h1 class="sansserif" style="color: white;">GECSCF Web Test</h1>
+			<br />
+			<div class="login-box" ng-controller="LoginController as ctrl">
+				<form class="login-form" autocomplete="off"
+					ng-submit="login()">
+					<h3 class="login-head">
+						<i class="fa fa-lg fa-fw fa-user"></i>SIGN IN
+					</h3>
+					<div class="form-group">
+						<label class="control-label">USERNAME</label> <input
+							ng-model="username" class="form-control" type="text"
+							placeholder="Username" autofocus>
+					</div>
+					<div class="form-group">
+						<label class="control-label">PASSWORD</label> <input
+							ng-model="password" class="form-control" type="password"
+							placeholder="Password">
+					</div>
+					<div class="form-group btn-container">
+						<button type="submit" class="btn btn-primary btn-block">
+							<i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN
+						</button>
+					</div>
+				</form>
+			</div>
+		</section>
+		<!-- Essential javascripts for application to work-->
+		<script th:src="@{/js/login.js}" src="../static/js/login.js"></script>
+
+	</body>
+</html>

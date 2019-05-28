@@ -1,0 +1,16 @@
+<div class="input-group">
+	<input type="text" placeholder="DD/MM/YYYY" show-weeks="false"
+		ng-readonly="true" class="form-control" ng-disabled="$ctrl.disabled"
+		uib-datepicker-popup="dd/MM/yyyy" ng-model="$ctrl.model"
+		is-open="popup.opened" ng-model-options="{timezone: 'UTC+0700'}"
+		datepicker-options="{'minDate': $ctrl.min , 'maxDate': $ctrl.max, 'dateDisabled': $ctrl.disabledWeekendFunc}"
+		close-text="Close" /> <span class="input-group-btn">
+		<button type="button" class="btn btn-default" ng-click="open()"
+			ng-disabled="$ctrl.disabled">
+			<i class="fa fa-calendar"></i>
+		</button>
+	</span>
+	<div class="time-picker-style" ng-if="$ctrl.config.hasTime" ng-disabled="$ctrl.disabled"
+		uib-timepicker="" ng-model="$ctrl.model" show-spinners="false"
+		show-meridian="false" ng-model-options="{timezone: 'UTC+0700'}"></div>
+</div>

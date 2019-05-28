@@ -1,0 +1,28 @@
+
+<label class="control-label" for="{{$ctrl.config.name}}"
+	ng-bind="$ctrl.config.label | translate"></label>
+<div class="responsive-table full-w">
+	<table class="table table-hover table-bordered dataTable no-footer"
+		cellspacing="0">
+		<thead>
+			<tr>
+				<th width="30" class="text-center"><input type="checkbox"
+					id="select-all-{{$ctrl.config.name}}-checkbox" ng-model="isSelectedAll"
+					ng-click="selectAll(isSelectedAll)" /></th>
+				<th ng-bind="'Role' | translate" >Role</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="data in $ctrl.data">
+				<td class="text-center"><input type="checkbox"
+					id="{{data[$ctrl.config.idField]}}-checkbox"
+					checklist-model="$ctrl.model" checklist-value="data" /></td>
+				<td class="text-left"
+					ng-click="$ctrl.select(data[$ctrl.config.displayField])"><label
+					class="label-thin" ng-bind="data[$ctrl.config.displayField]"></label></td>
+			</tr>
+		</tbody>
+	</table>
+		<span class="error-msg"
+		ng-bind="errors[$ctrl.config.name].cause | translate:errors[$ctrl.config.name].params"></span>
+</div>

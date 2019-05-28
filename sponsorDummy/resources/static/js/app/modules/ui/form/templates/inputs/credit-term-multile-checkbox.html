@@ -1,0 +1,29 @@
+<div class="row col no-margin">
+	<div class="div-btn-style col-12 col-sm-4 text-center">
+		<label class="checkbox-inline no-spaces"> <input
+			type="checkbox" id="start-date-checkbox" name="useStartDateActive"
+			ng-model="$ctrl.model.useStartDateActive" ng-disable="disabled" disabled="disabled" />
+			<span class="no-margin">{{'specific.community.owner.customer_profiles>>customer_profile_configurations>>ap_sponsor_configurations>>payment_date_formulas_configuration>>credit_terms_creation_popup.select_formula_form.checkbox.formula_start_date' |
+				translate}}</span>
+		</label>
+	</div>
+	<div class="col text-center" style="font-weight: 900; padding: 10px;">
+		<b> + </b>
+	</div>
+	<div class="div-btn-style col-12 col-sm-3 text-center">
+		<label class="checkbox-inline no-spaces"> <input
+			type="checkbox" id="credit-term-checkbox" name="useCreditTerm"
+			ng-model="$ctrl.model.useCreditTerm" /> <span class="no-margin">{{'specific.community.owner.customer_profiles>>customer_profile_configurations>>ap_sponsor_configurations>>payment_date_formulas_configuration>>credit_terms_creation_popup.select_formula_form.checkbox.formula_credit_term' | translate}}</span>
+		</label>
+	</div>
+	<div class="col text-center" style="font-weight: 900; padding: 10px;">
+		<b> + </b>
+	</div>
+	<div class="div-btn-style col-12 col-sm-3 text-center">
+		<label class="checkbox-inline no-spaces"> <input
+			type="checkbox" id="payment-period-checkbox" name="usePaymentPeriod"
+			ng-model="$ctrl.model.usePaymentPeriod" /> <span class="no-margin"
+			ng-bind="'specific.community.owner.customer_profiles>>customer_profile_configurations>>ap_sponsor_configurations>>payment_date_formulas_configuration>>credit_terms_creation_popup.select_formula_form.checkbox.formula_period' | translate"></span>
+		</label>
+	</div>
+</div>

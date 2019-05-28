@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.springframework.org/security/tags" lang="en">
+    <head>
+        <meta name="description"
+            content="Vali is a responsive and free admin theme built with
+            Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+        <!-- Twitter meta-->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:site" content="@pratikborsadiya">
+        <meta property="twitter:creator" content="@pratikborsadiya">
+        <!-- Open Graph Meta-->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Vali Admin">
+        <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+        <meta property="og:url"
+            content="http://pratikborsadiya.in/blog/vali-admin">
+        <meta property="og:image"
+            content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+        <meta property="og:description"
+            content="Vali is a responsive and free admin theme built with
+            Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+        <title>GECSCF Web Test</title>
+        <link rel="icon" type="image/png" href="img/gec-logo.png" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Main CSS-->
+        <link th:href="@{/css/main.css}" href="../static/css/main.css"
+            rel="stylesheet" />
+        <link th:href="@{/css/style.css}" href="../static/css/style.css"
+            rel="stylesheet" />
+
+        <script th:src="@{/js/addition-libs.js}"
+            src="../static/js/angular-bootstrap.js"></script>
+        <script th:src="@{/js/app/shared/utils/web-helper.js}"
+            src="/static/js/app/shared/utils/web-helper.js"></script>
+
+        <!-- EVIL KIDS STYLE-->
+        <!-- Bootstrap Core CSS -->
+        <!-- <link href="../../css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- MetisMenu CSS -->
+        <link href="../../css/vendor/metisMenu/metisMenu.min.css"
+            rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="../../css/dist/css/sb-admin-2.css" rel="stylesheet">
+        <!-- <link href="../../css/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet"> -->
+        <!-- DataTables Responsive CSS -->
+        <link
+            href="../../css/vendor/datatables-responsive/dataTables.responsive.css"
+            rel="stylesheet">
+        <!-- Morris Charts CSS -->
+        <link href="../../css/vendor/morrisjs/morris.css" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="../../css/vendor/font-awesome/css/font-awesome.min.css"
+            rel="stylesheet" type="text/css">
+        <link href="../../css/app/main.css" rel="stylesheet">
+
+        <!-- End Mimin Theme -->
+        <link th:href="@{/css/loading-overlay.css}"
+            href="../static/css/loading-overlay.css" rel="stylesheet" />
+        <script th:src="@{/js/plugins/loading-overlay.js}"
+            src="../static/js/plugins/loading-overlay.js"></script>
+        <script th:src="@{/js/plugins/ngDialog.js}"
+            src="../static/js/plugins/ngDialog.js"></script>
+
+        <!-- Custom Style CSS-->
+        <!-- Font-icon css-->
+        <link rel="stylesheet" type="text/css"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+</head>
+<body class="app sidebar-mini rtl" ng-app="gec" ng-controller="BodyCtrl as
+    $BodyCtrl">
+
+    <!-- Navbar -->
+    <header class="app-header">
+        <h5 class="margin-auto rem-hori-1" style="color: white;">GECSCF Web Test</h5>
+        <!-- Sidebar toggle button-->
+        <a class="app-sidebar__toggle" data-toggle="sidebar"
+            ng-click="$BodyCtrl.onShowHideSideMenu()"
+            aria-label="Hide Sidebar" style="color: white"></a>
+        <!-- Navbar Right Menu-->
+        <ul class="app-nav">
+            <span class="col"></span>
+            <!-- User Menu-->
+            <li class="dropdown"><a class="app-nav__item" href="#"
+                    data-toggle="dropdown" aria-label="Open Profile Menu"><i
+                        class="fa fa-user fa-lg"></i></a>
+                <ul class="dropdown-menu settings-menu dropdown-menu-right"
+                    style="width: 180px">
+                    <li><a class="dropdown-item" ui-sref="profile"><i
+                                class="width-25-px fa fa-user fa-lg"></i>
+                            Profile</a></li>
+                    <li><a class="dropdown-item" ui-sref="change-password"><i
+                                class="width-25-px fa fa-lock fa-lg"></i>
+                            Change Password</a></li>
+                    <li><a class="dropdown-item" href="/login"><i
+                                class="width-25-px fa fa-sign-out fa-lg"></i>
+                            Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <!-- Sidebar menu-->
+    <div name="TabMenu" class="{{ $BodyCtrl.classSideMenu }}"
+        ng-controller="tabMenuController as $MenuCtrl">
+        <div class="app-sidebar__overlay" data-toggle="sidebar" ng-init=""></div>
+        <aside class="app-sidebar">
+            <div class="app-sidebar__user">
+                <img class="app-sidebar__user-avatar"
+                    src="img/unknown-user-profile.png"
+                    alt="User Image">
+                <div>
+                    <p class="app-sidebar__user-name">
+                        <label class="font-13">User: </label>
+                        <label class="font-13">{{ $MenuCtrl.username }}</label>
+                    </p>
+                    <p class="app-sidebar__user-designation font-12">
+                        <span ng-repeat="role in $MenuCtrl.roles track by
+                            $index">
+                            <span>Role: </span>
+                            <span ng-if="$index != 0">, </span>{{ role }}</span>
+                        <span>Tester</span>
+                    </p>
+                    <p class="app-sidebar__user-designation font-10">
+                        <label class="full-w font-10">Login : {{$MenuCtrl.loginTime}}</label>
+                    </div>
+                </div>
+
+                <ul class="app-menu text-center" id="content"
+                    th:fragment="content">
+
+                    <li ng-repeat="module in $MenuCtrl.modules track by $index"
+                        class="treeview"
+                        ng-class="{'is-expanded' : module.open}">
+                        <a class="app-menu__item" href="" ng-click="module.open=
+                            !module.open"
+                            data-toggle="treeview"><i class="app-menu__icon fa
+                                fa-laptop"></i><span
+                                class="app-menu__label text-left rem-left-1">{{module.title}}</span><i
+                                class="treeview-indicator fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li ng-repeat="dummy in module.list track by
+                                $index">
+                                <a class="treeview-item text-left"
+                                    style="font-size: 14px;"
+                                    href="/#/{{dummy.uri}}"
+                                    ui-sref-active="active">
+                                    <i class="icon fa fa-circle-o"></i>{{dummy.title}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <main class="app-content" style="font-size: 12px; {{ $BodyCtrl.cssMain
+            }}">
+            <ui-view></ui-view>
+        </main>
+
+
+        <script th:src="@{/js/app/modules/core/core.module.js}"
+            src="/static/js/app/shared/utils/web-helper.js"></script>
+
+        <script th:src="@{/js/app/modules/ui/gec.ui.module.js}"
+            src="/static/js/app/shared/utils/web-helper.js"></script>
+
+        <script th:src="@{/js/app/modules/ui/table/gec.ui.table.module.js}"
+            src="/static/js/js/app/modules/ui/table/gec.ui.table.module.js"></script>
+        <script th:src="@{/js/app/modules/ui/ui.module.js}"
+            src="/static/js/app/modules/ui/ui.module.js"></script>
+
+        <script th:src="@{/js/app/modules/ui/table/components/gec-filter.js}"
+            src="/static/js/js/app/modules/ui/table/components/gec-filter.js"></script>
+        <script
+            th:src="@{/js/app/modules/ui/table/components/gec-data-table.js}"
+            src="/static/js/js/app/modules/ui/table/components/gec-data-table.js"></script>
+        <script
+            th:src="@{/js/app/modules/ui/table/components/gec-filter-create-page.js}"
+            src="/static/js/js/app/modules/ui/table/components/gec-filter-create-page.js"></script>
+        <script
+            th:src="@{/js/app/modules/ui/table/components/gec-data-summary.js}"
+            src="/static/js/js/app/modules/ui/table/components/gec-data-summary.js"></script>
+        <script
+            th:src="@{/js/app/modules/ui/table/directives/check-image.js}"
+            src="/static/js/app/modules/ui/table/directives/check-image.js"></script>
+        <script
+            th:src="@{/js/app/modules/ui/table/components/gec-document-table.js}"
+            src="/static/js/js/app/modules/ui/table/components/gec-document-table.js"></script>
+        <script th:src="@{/js/app/modules/ui/table/directives/context-menu.js}"
+            src="/static/js/js/app/modules/ui/table/directives/context-menu.js"></script>
+        <script th:src="@{/js/app/modules/ui/form/gec.ui.form.module.js}"
+            src="/static/js/app/modules/ui/form/gec.ui.form.module.js"></script>
+        <script th:src="@{/js/app/modules/ui/form/components/gec-form.js}"
+            src="/static/js/js/app/modules/ui/form/components/gec-form.js"></script>
+        <script th:src="@{/js/app/modules/ui/form/components/gec-form-item.js}"
+            src="/static/js/js/app/modules/ui/form/components/gec-form-item.js"></script>
+        <script
+            th:src="@{/js/app/modules/ui/form/components/gec-editable-table.js}"
+            src="/static/js/js/app/modules/ui/form/components/gec-editable-table.js"></script>
+        <script
+            th:src="@{/js/app/modules/ui/form/components/gec-button-action.js}"
+            src="/static/js/js/app/modules/ui/form/components/gec-button-action.js"></script>
+        <script th:src="@{/js/app/modules/ui/custom/gec.ui.custom.module.js}"
+            src="/static/js/app/modules/ui/custom/gec.ui.custom.module.js"></script>
+        <script
+            th:src="@{/js/app/modules/ui/custom/components/gec-logo-list.js}"
+            src="/static/js/app/modules/ui/custom/components/gec-logo-list.js"></script>
+        <script th:src="@{/js/app/modules/ui/dialog/gec.ui.dialog.module.js}"
+            src="/static/js/app/modules/ui/dialog/gec.ui.dialog.module.js"></script>
+        <script th:src="@{/js/app/modules/sponsor/sponsor.module.js}"
+            src="/static/js/app/modules/sponsor/sponsor.module.js"></script>
+        <script th:src="@{/js/main.js}" src="../static/js/angular-bootstrap.js"></script>
+        <!-- Mapping Code-->
+        <script
+            th:src="@{/js/app/modules/register-account/registerAccount.module.js}"
+            src="/static/js/app/modules/register-account/registerAccount.module.js"></script>
+        <script th:src="@{/js/app/modules/mapping-code/mappingCode.module.js}"
+            src="/static/js/app/modules/mapping-code/mappingCode.module.js"></script>
+        <script
+            th:src="@{/js/app/modules/mapping-exception/mappingException.module.js}"
+            src="/static/js/app/modules/mapping-exception/mappingException.module.js"></script>
+        <script
+            th:src="@{/js/app/modules/log-transaction/logTransaction.module.js}"
+            src="/static/js/app/modules/log-transaction/logTransaction.module.js"></script>
+        <script th:src="@{/js/app/modules/dashboard/dashboard.module.js}"
+            src="/static/js/app/modules/dashboard/dashboard.module.js"></script>
+        <script th:src="@{/js/app/modules/profile/profile.module.js}"
+            src="/static/js/app/modules/profile/profile.module.js"></script>
+        <script
+            th:src="@{/js/app/modules/change-password/changePassword.module.js}"
+            src="/static/js/app/modules/change-password/changePassword.module.js"></script>
+        <script
+            th:src="@{/js/app/modules/user-management/userManagement.module.js}"
+            src="/static/js/app/modules/user-management/userManagement.module.js"></script>
+    </body>
+</html>

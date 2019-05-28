@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 row text-left">
+				<div class="col-md-7 col-sm-7 text-left">
+					<span id="product-type-list-label" class="animated fadeInLeft">{{$ctrl.config.title | translate}}</span>
+				</div>
+				<div class="col-md-5 col-sm-5">
+					<scf-button
+						class="btn-org" id="product-type-list-view-button"
+						ng-click="ctrl.gotoListPage()" title="View product type">
+					<i class="fa fa-search" aria-hidden="true"></i></scf-button>
+					<scf-button
+						class="btn-org" id="product-type-setup-button"
+						ng-click="ctrl.gotoConfigPage()" title="Config product type">
+					<i class="fa fa-cog" aria-hidden="true"></i></scf-button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,234 @@
+<body>
+
+	<div class="app-title">
+		<h1>Register Account</h1>
+	</div>
+	<div class="title panel-body body-white-rem-hori-1">
+		<div class="panel-heading">
+			<form id="createform">
+				<div align="right">
+					<button ui-sref="register_account_new"
+						class="btn btn-success"
+						title="Click Here for Register Account">Click Here for
+						Register Account</button>
+				</div>
+				<br />
+
+				<div class="dataTables_length row" id="dataTables-example_length">
+					<div class="col-md-6 padding-verti-0-5">
+						<select name="dataTables-example_length"
+							class="form-control full-w"
+							ng-model="params.itemNo">
+							<option value="10">10</option>
+							<option value="25">25</option>
+							<option value="50">50</option>
+							<option value="">All</option>
+						</select>
+					</div>
+
+					<div class="col-md-6 padding-verti-0-5">
+						<input type="text" class="form-control full-w"
+							ng-model="params.accountNo" placeholder="Account No."
+							maxlength="20">
+					</div>
+
+					<div class="col-12 padding-top-0-5">
+						<div class="row text-center justify-content-center">
+							<div class="col-6 col-md-3 col-lg-2">
+								<button type="submit"
+									ng-click="$ctrl.getAllBankAccount(params);
+									$ctrl.getTotalBankAccount(params)"
+									class="btn btn-primary col" title="Search">Search</button>
+							</div>
+							<div class="col-6 col-md-3 col-lg-2">
+								<button type="reset" ng-click="$ctrl.resetBankAccount()"
+									class="btn btn-danger col" title="Reset">Reset</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="panel-body">
+			<div class="alert alert-danger" role="alert"
+				ng-show="$ctrl.displayAlert">
+				<strong> {{$ctrl.showErrorMessageDelete}}</strong>
+			</div>
+			<div class="table-responsive">
+				<table width="100%"
+					class="table table-striped table-bordered table-hover"
+					id="dataTables-example">
+					<thead>
+						<tr style="background: #ccc">
+							<th>
+								<div align="center">No.</div>
+							</th>
+							<th>
+								<div align="center">Account No</div>
+							</th>
+							<th>
+								<div align="center">Customer ID</div>
+							</th>
+							<th>
+								<div align="center">Customer Code</div>
+							</th>
+							<th>
+								<div align="center">Bank Code</div>
+							</th>
+							<th style="width: 70px;">
+								<div align="center">Account Type</div>
+							</th>
+							<th>
+								<div align="center">Currency Code</div>
+							</th>
+							<th>
+								<div align="center">Credit Limit</div>
+							</th>
+							<th>
+								<div align="center">Outstanding</div>
+							</th>
+							<th>
+								<div align="center">Ledger Balance</div>
+							</th>
+							<th>
+								<div align="center">Available</div>
+							</th>
+							<th>
+								<div align="center">Account Status</div>
+							</th>
+							<th>
+								<div align="center">Update Time</div>
+							</th>
+							<th>
+								<div align="center">Update By</div>
+							</th>
+							<th>
+								<div align="center">Action</div>
+							</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="odd gradeX" ng-repeat="each in $ctrl.data">
+							<td class="center">
+								<div align="center">{{each.itemNo}}</div>
+
+							</td>
+							<td>
+								<div align="left" style="word-wrap: break-word;">{{each.accountNo}}</div>
+							</td>
+							<td>
+								<div align="left" style="word-wrap: break-word;">{{each.customerID}}</div>
+							</td>
+							<td>
+								<div align="left" style="word-wrap: break-word;">{{each.customerCode}}</div>
+							</td>
+							<td>
+								<div align="center" style="word-wrap: break-word;">{{each.bankCode}}</div>
+							</td>
+							<td><div align="center"
+									style="width: 70px; word-wrap: break-word;">{{each.accountTypeDisplay}}</div></td>
+							<td>
+								<div align="center" style="word-wrap: break-word;">{{each.currencyCode}}</div>
+							</td>
+							<td>
+								<div
+									ng-class="{positive:each.creditLimit>=0,negative:each.creditLimit<0}"
+										align="right" style="stword-wrap: break-word;">{{each.creditLimit |
+										number:2}}</div>
+								</td>
+								<td>
+									<div
+										ng-class="{positive:each.outstanding>=0,negative:each.outstanding<0}"
+											align="right" style="word-wrap: break-word;">{{each.outstanding
+											| number:2}}</div>
+									</td>
+									<td>
+										<div
+											ng-class="{positive:each.ledgerBalance>=0,negative:each.ledgerBalance<0}"
+												align="right" style="word-wrap: break-word;">{{each.ledgerBalance
+												| number:2}}</div>
+										</td>
+										<td>
+											<div
+												ng-class="{positive:each.available>=0,negative:each.available<0}"
+													align="right" style="word-wrap: break-word;">{{each.available
+													| number:2}}</div>
+											</td>
+											<td>
+												<div align="center" style="word-wrap: break-word;">{{each.accountStatusDisplay}}</div>
+											</td>
+											<td>
+												<div align="center" style="word-wrap: break-word;">{{each.updateTimeDisplay}}</div>
+											</td>
+											<td>
+												<div align="center" style="word-wrap: break-word;">{{each.updateByUser.username}}</div>
+											</td>
+											<td>
+												<div align="left" class="text-center"
+													style="width: 150px; word-wrap: break-word;">
+													<button class="btn btn-info fa fa-cog"
+														ui-sref="register_account_mgnt_edit({id:each.accountID})"
+														title="Edit" style="width: 37px; height: 32px;">
+														<i class="glyphicon glyphicon-pencil"></i>
+													</button>
+													<button class="btn btn-warning fa fa-search"
+														ui-sref="register_account_view({id:each.accountID})"
+														title="View" style="width: 37px; height: 32px;">
+														<i class="glyphicon glyphicon-zoom-out"></i>
+													</button>
+													<button class="btn btn-danger fa fa-trash" data-toggle="modal"
+														data-target="#exampleModal" title="Delete"
+														ng-click="$ctrl.confirmDeleteBankAccount(each.accountID)"
+														style="width: 37px; height: 32px;">
+														<i class="glyphicon glyphicon-trash"></i>
+													</button>
+												</div>
+											</td>
+
+										</tr>
+										<tr ng-show="$ctrl.total == 0">
+											<td colspan="13"><div align="center">No record found</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="row col-sm-12">
+								<div class="col-sm-6">
+									<div class="dataTables_info" id="dataTables-example_info"
+										role="status" aria-live="polite">
+										Total of Record(s) : <label>{{$ctrl.total}}</label>
+									</div>
+								</div>
+							</div>
+
+
+							<!-- Modal -->
+							<div class="modal fade" id="exampleModal" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Delete Account</h4>
+										</div>
+										<input type="hidden" class="form-control money"
+											ng-model="$ctrl.deleteAccountID" />
+										<div class="modal-body">Are you sure to delete this
+											Account?</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger"
+												data-dismiss="modal"
+												ng-click="$ctrl.deleteBankAccount($ctrl.deleteAccountID)">Delete</button>
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</body>

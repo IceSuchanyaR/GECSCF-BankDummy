@@ -1,0 +1,33 @@
+<div class="modal-content">
+	<form name="successDialogForm" class="form-horizontal" ng-submit="closeThisDialog();">
+		<div class="modal-header">
+			<row>
+				<div class="rem-right-1 dialog-header-text">
+					<image width="70" height="70" ng-src="img/success-icon.png"></image>
+				</div>
+				<div class="dialog-header-text">
+					<h2>
+						<span id="popup-header-message-label" class="gec-pop-up-font-size-green" ng-bind="ngDialogData.data.headerMessage | translate">
+						</span>
+					</h2>
+				</div>
+			</row>
+		</div>
+		<div class="modal-body">
+			<div class="row" ng-if="ngDialogData.data.requestNo">
+				<div class="col-md-3 col-sm-3">
+					<label
+						ng-bind="ngDialogData.data.prefixLanguageKey + '.request_no' | translate"></label>
+				</div>
+				<div class="col-md-9 col-sm-9">
+					<span id="result-label" ng-bind="ngDialogData.data.requestNo"></span>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="text-right">
+				<button id="popup-ok-button" class="btn btn-primary" type="submit" ng-bind="'OK' | translate"></button>
+			</div>
+		</div>
+	</form>
+</div>

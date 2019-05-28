@@ -1,0 +1,7 @@
+<select class="form-control" ng-model="$ctrl.model"
+	ng-disabled="$ctrl.disabled"
+	ng-options="opt.value as (opt.label | translate) for opt in options track by $ctrl.trackBy(opt , opt.id )">
+
+	<option ng-if="$ctrl.config.required && $ctrl.config.defaultValue==undefined" value="">{{'core.option.please_select'
+		| translate}}</option>
+</select>

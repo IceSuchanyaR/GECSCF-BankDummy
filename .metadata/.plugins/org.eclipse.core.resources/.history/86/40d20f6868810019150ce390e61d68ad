@@ -1,0 +1,6 @@
+<span>&nbsp;</span>
+<button class="btn btn-{{$ctrl.config.buttonType?$ctrl.config.buttonType:'default'}}" ng-click="$ctrl.doAction()" ng-if="$ctrl.showItem()"
+ type="{{$ctrl.config.type?$ctrl.config.type:'button'}}" ng-disabled="$ctrl.disabled">
+	<i ng-if="$ctrl.config.icon" class="fa fa-fw fa-lg {{$ctrl.config.icon}}"></i>
+	{{$ctrl.config.label | translate}}
+</button>

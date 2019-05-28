@@ -1,0 +1,5 @@
+<div class="radio" ng-repeat="opt in options track by opt.value">
+	<label name="{{$ctrl.config.name}}"> <input type="radio" ng-disabled="$ctrl.disabled" ng-model="$ctrl.model" value="{{opt.value}}">
+		{{opt.label | translate}}
+	</label>
+</div>

@@ -1,0 +1,39 @@
+page:
+  title: User Profile
+  form:
+    rows:
+      - items:
+          - name: username
+            type: text
+            disabled: true
+            required: true
+            label: Username
+          - name: role
+            disabled: true
+            type: text
+            label: Role
+
+          - name: fullName
+            required: true
+            type: text
+            label: Full Name
+            placeholder: Enter full name
+          - name: email
+            type: email
+            required: true
+            label: E-Mail
+            placeholder: Enter e-mail
+
+    submission:
+      confirmation:
+        message: Confirm save update profile.
+        handler: updateProfile
+        success:
+          message: Update profile success.
+          handler: onSuccessNavigateToHome
+
+    footer:
+      actions:
+        - label: Save
+          type: submit
+          buttonType: primary

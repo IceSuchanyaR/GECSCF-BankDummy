@@ -1,0 +1,57 @@
+<div class="input-group">
+	<input type="text"
+       class="form-control text-center"
+	   ng-disabled="$ctrl.disabled"
+       placeholder="{{ 'HH' | translate}}"
+		 name="{{$ctrl.config.name + 'hh'}}"
+		 ng-change="$ctrl.limitTimeControl();"
+       ng-model="$ctrl.hh"
+       ui-mask="99"
+       pattern-model />
+
+ 	<span class="input-group-text time-sperator">:</span>
+
+	<input type="text"
+	       class="form-control text-center"
+		   ng-disabled="$ctrl.disabled"
+	       placeholder="{{ 'MM' | translate}}"
+	       name="{{$ctrl.config.name + 'mm'}}"
+			 ng-change="$ctrl.limitTimeControl();"
+			 ng-model="$ctrl.mm"
+	       ui-mask="99"
+	       pattern-model />
+		
+	 <div class="input-group-append">
+	    <button class="btn btn-default" type="button"
+		ng-disabled="$ctrl.disabled" ng-click="$ctrl.add()">
+		<i class="fa fa-plus" aria-hidden="true"></i></button>
+	 </div>
+	
+</div>
+
+<span class="error-msg" ng-if="$ctrl.duplicated">
+	{{ 'errors.already_exists' | translate }}</span>
+
+<span class="error-msg" ng-if="$ctrl.empty">
+	{{ 'errors.time_required' | translate }}</span>
+<div class="row">
+	
+	<div class="rem-horizontal col-12" ng-repeat="time in $ctrl.model">
+		<div class="row-fit rem-top">
+			<div class="input-group mb-3">
+			  <div class="input-group-prepend">
+			     <span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+			  </div>
+			  <input type="text"
+					ng-disabled="true"
+					class="form-control text-center no-padding-horizontal"
+					value="{{ $ctrl.mapTime(time.hh) + ':' + $ctrl.mapTime(time.mm) }}" />
+			  <div class="input-group-append">
+			    <button type="button" class="btn btn-default"
+						ng-click="$ctrl.deleteTime(time)" ng-disabled="$ctrl.disabled">
+						<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+			 </div>
+			</div>
+		</div>
+	</div>
+</div>

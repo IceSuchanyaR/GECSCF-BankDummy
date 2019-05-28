@@ -1,0 +1,22 @@
+<label class="control-label" for="{{config.name}}"
+	ng-bind="config.label"></label>&nbsp;:
+
+<div class="input-group">
+	<input type="text" placeholder="DD/MM/YYYY" show-weeks="false"
+		ng-readonly="true" class="form-control" ng-disabled="config.disabled"
+		uib-datepicker-popup="dd/MM/yyyy" ng-model="model[config.name]"
+		is-open="popup.opened"
+		datepicker-options="{'minDate': model[config.min] , 'maxDate': model[config.max]}"
+		close-text="Close" /> 
+		
+	<span class="input-group-btn">
+		<button type="button" class="btn btn-default" ng-click="open()" ng-disabled="config.disabled">
+			<i class="fa fa-calendar"></i>
+		</button>
+	</span>
+	<div ng-if="config.hasTime" ng-disabled="config.disabled" uib-timepicker="" ng-model="model[config.name]" show-spinners="false" show-meridian="false"></div>
+	    
+	
+</div>
+<span ng-if="errors[config.name]" class="error-msg"
+	ng-bind="errors[config.name]"></span>

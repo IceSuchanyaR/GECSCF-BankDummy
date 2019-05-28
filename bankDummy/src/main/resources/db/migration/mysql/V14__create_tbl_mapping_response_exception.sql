@@ -1,0 +1,16 @@
+CREATE TABLE `tbl_mapping_response_exception` (
+  `exception_id` MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `bank_code` VARCHAR(50)    CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL,
+  `account_no` VARCHAR(20)  CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL,
+  `service_type` VARCHAR(50)  NOT NULL,
+  `delay` INT NOT NULL,
+  `transaction_status` VARCHAR(20) NOT NULL,
+  `failure_reason_code` VARCHAR(255)  NULL,
+  `failure_reason` VARCHAR(255)  NULL,
+  `status` VARCHAR(10) NOT NULL,
+  `create_by` MEDIUMINT NOT NULL,
+  `create_time` DATETIME NOT NULL,
+  `update_by` MEDIUMINT NOT NULL,
+  `update_time` DATETIME NOT NULL,
+  `version` INT NOT NULL,
+  PRIMARY KEY (`exception_id`));

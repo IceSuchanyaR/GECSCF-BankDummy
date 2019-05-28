@@ -1,0 +1,74 @@
+page:
+  title: User Management - View
+  form:
+    rows:
+    - items:
+      - name: username
+        label: Username
+        type: text
+        disabled: true
+      - name: role
+        label: Role
+        type: dropdown
+        disabled: true
+        options:
+        - label: 
+          value: null
+        - label: Common User
+          value: COMMON_USER
+        - label: Sponsor User
+          value: SPONSOR_USER
+        - label: Bank User
+          value: BANK_USER
+
+      - name: fullName
+        required: true
+        type: text
+        label: Full Name
+        disabled: true
+        placeholder: Enter full name
+      - name: email
+        type: email
+        disabled: true
+        required: true
+        label: E-mail
+        placeholder: Enter e-mail
+
+      - name: birthday
+        type: calendar
+        label: Birthday
+        disabled: true
+        required: true
+      - type: space
+
+      - name: createByUsername
+        label: Create by
+        type: text
+        disabled: true
+      - name: createTime
+        type: calendar
+        label: Create time
+        hasTime: true
+        disabled: true
+
+      - name: updateByUsername
+        label: Update by
+        type: text
+        disabled: true
+      - name: updateTime
+        type: calendar
+        label: Update time
+        hasTime: true
+        disabled: true
+
+      - name: enabled
+        type: checkbox
+        disabled: true
+        displayValue: Activate
+
+    footer:
+      actions:
+      - label: Back
+        handler:
+          navigation:
+            to: back   

@@ -1,0 +1,16 @@
+CREATE TABLE `tbl_config_code_generator` (
+  `generator_id` MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `generator_type` VARCHAR(50) NOT NULL,
+  `pattern_code` VARCHAR(20) NOT NULL,
+  `pattern` VARCHAR(20) NOT NULL,
+  `next_running` integer NOT NULL,
+  `running_step` integer NOT NULL,
+  `running_digit` integer NOT NULL,
+  `last_generate_code` VARCHAR(100)  NOT NULL,
+  `status` VARCHAR(2) NOT NULL,
+  `create_by` MEDIUMINT NOT NULL,
+  `create_time` DATETIME NOT NULL,
+  `update_by` MEDIUMINT NOT NULL,
+  `update_time` DATETIME NOT NULL,
+  `version` INT NOT NULL,
+  PRIMARY KEY (`generator_id`));

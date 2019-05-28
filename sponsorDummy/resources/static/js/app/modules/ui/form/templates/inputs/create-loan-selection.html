@@ -1,0 +1,45 @@
+<div>
+	<div class="frame-page-control">
+		<form name="transactionForm" class="form-horizontal">
+			<div ng-show="$ctrl.model.displaySearchResult">
+				<div class="row">
+					<form-item> <scf-button id="unselect-all-page-button"
+						class="btn-default" ng-show="!$ctrl.model.isSelectAll()"
+						ng-click="$ctrl.model.selectedAllDocuments()"> <i
+						class="fa fa-square-o" aria-hidden="true"></i> &nbsp;Select all</scf-button> <scf-button
+						id="select-all-page-button" class="btn-default"
+						ng-show="$ctrl.model.isSelectAll()" ng-click="$ctrl.model.selectedAllDocuments()">
+					<i class="fa fa-check-square-o" aria-hidden="true"></i>
+					&nbsp;Select all</scf-button> </form-item>
+					<form-item class="text-right"> <label
+						ng-bind="'Selected' | translate" class="control-label">Select
+						:</label> <label id="document-selected-label" class="label-thin"
+						ng-bind="$ctrl.model.getDocumentRecord()"></label> <label
+						class="label-thin" ng-bind="'Records' | translate"></label> </form-item>
+				</div>
+				<!-- Start Table-->
+				<div class="full-w responsive-table">
+					<scf-layout-table id="create-transaction-table"
+						component-config="$ctrl.model.dataTable"
+						component-datas="$ctrl.model.documentDisplay"
+						current-page="$ctrl.model.pageModel.currentPage"
+						record-per-page="$ctrl.model.pageModel.pageSizeSelectModel"
+						clear-sort-order="$ctrl.model.pageModel.clearSortOrder"></scf-layout-table>
+					<!-- 					<span class="error-msg" ng-show="ctrl.errorDisplay" -->
+					<!-- 						id="warning-message-label" ng-bind="errors.message | translate"></span> -->
+				</div>
+				<div class="col-12 filter-container text-right">
+					<span> <b ng-bind="$ctrl.model.splitePageTxt"
+						id="create-transaction-paging-label"></b> &nbsp;&nbsp; <scf-pagination
+							dropdown-id="page-limit-dropdown" name="create-transaction"
+							page-size-model="$ctrl.model.pageModel.pageSizeSelectModel"
+							total-page="$ctrl.model.pageModel.totalPage"
+							current-page="$ctrl.model.pageModel.currentPage"
+							page-size-list="$ctrl.model.pageSizeList"
+							page-action="$ctrl.model.reloadPage"></scf-pagination>
+					</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

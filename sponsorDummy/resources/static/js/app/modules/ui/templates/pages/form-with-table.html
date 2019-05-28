@@ -1,0 +1,26 @@
+<div class="app-title">
+	<div>
+		<h1 ng-bind="$ctrl.page.title | translate"></h1>
+	</div>
+</div>
+<div class="tile" ui-view="body">
+	<gec-form config="$ctrl.page.form" model="$ctrl.model">
+
+		<gec-data-table config="$ctrl.page.table" criteria="$ctrl.criteria"
+			ng-if="$ctrl.page.table"
+			page-data="$ctrl.pageData"> <gec-table-pagination></gec-table-pagination>
+		</gec-data-table>
+		<gec-form-footer ng-if="$ctrl.page.form.footer">
+
+			<gec-button-action ng-repeat="action in $ctrl.page.form.footer.actions"
+				config="action" handler="action.handler">
+			</gec-button-action>
+
+		</gec-form-footer>
+
+	</gec-form>
+
+</div>
+<div class="tile-body" id="{{$ctrl.page.name}}-table-panel">
+
+</div>

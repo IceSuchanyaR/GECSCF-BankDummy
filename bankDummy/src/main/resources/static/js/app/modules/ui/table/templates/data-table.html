@@ -1,0 +1,43 @@
+<div ng-if="$ctrl.config.header!=undefined &amp;&amp;
+	$ctrl.showTable($ctrl.config, $ctrl.model)" class="tile-title-w-btn">
+	<h3 class="title" ng-bind="$ctrl.config.header.title | translate"></h3>
+	<p>
+		<gec-button-action ng-repeat="action in $ctrl.config.header.actions"
+			config="action" handler="action.handler"> </gec-button-action>
+	</p>
+</div>
+<div class="responsive-table" ng-if="$ctrl.showTable($ctrl.config,
+	$ctrl.model)">
+	<table class="table table-hover table-striped table-bordered"
+		cellspacing="0" block-ui="{{$ctrl.config.name}}">
+		<thead>
+			<tr>
+				<th class="text-center"
+					ng-repeat="column in $ctrl.config.columns track by $index"
+					ng-bind="column.label | translate" visibility="column.showIf"></th>
+				<th ng-if="$ctrl.config.actions"
+					style="white-space: nowrap; width: 1%;"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="record in $ctrl.data track by $index"
+				context-menu="$ctrl.menuContext(record)" model="record">
+				<td ng-repeat="column in $ctrl.config.columns" column="column">
+					<gec-table-column ng-if="column.type != 'rownumber'" data="record"
+						config="column"> </gec-table-column>
+					<div class="text-center" ng-if="column.type=='rownumber'">
+						<span
+							ng-bind="(($ctrl.paging.size * $ctrl.paging.page) +
+							$parent.$parent.$index + 1)"></span>
+					</div>
+				</td>
+				<td ng-if="$ctrl.config.actions">
+					<div class="btn-group" role="group" aria-label="Table actions">
+						<table-action data="record" config="action"
+							ng-repeat="action in $ctrl.config.actions"></table-action>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

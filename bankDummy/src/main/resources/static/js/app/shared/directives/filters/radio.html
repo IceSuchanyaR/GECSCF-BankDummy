@@ -1,0 +1,9 @@
+<label class="control-label" for="{{config.name}}"
+	ng-bind="config.label"></label>&nbsp;:
+<div class="radio" ng-repeat="opt in config.options track by opt.value">
+	<label name="{{config.name}}"> <input type="radio" ng-disabled="config.disabled"
+		ng-model="model[config.name]" value="{{opt.value}}">
+		{{opt.label}}
+	</label>
+</div>
+

@@ -1,0 +1,1 @@
+<p class="form-control-static" ng-bind="$ctrl.model || $ctrl.model == 0 ? ($ctrl.model | number) : 'N/A';"></p>

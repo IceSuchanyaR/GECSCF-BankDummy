@@ -1,0 +1,124 @@
+page:
+  title: Upload Document
+  form:
+    rows:
+    - items:
+      - label: Document
+      - type: space
+      - name: url
+        type: text
+        defaultValue: https://192.168.99.100:8444/document/v1/documents
+        required: true
+        label: URL
+      - name: apiKey
+        type: text
+        label: API Key
+        defaultValue: 32c1021a-de75-4588-a6c8-581d446c1d37
+      - name: scode
+        type: text
+        label: SCode
+        defaultValue: PTTLAO
+    - type: editable-table
+      name: dataTable
+      addButtonLabel: Add another document
+      columns:
+      - type: rownumber 
+        label: No
+      - name: document_number
+        label: Document number
+        type: input-text
+        editable: true
+      - name: document_version
+        label: Document version
+        type: input-text
+        editable: true
+      - name: fiscal_year
+        label: Fiscal year
+        type: input-text
+        editable: true
+        defaultValue: 2019
+      - name: document_type
+        label: Document type
+        type: input-text
+        editable: true
+        defaultValue: SD_SO
+      - name: sales_type
+        label: Sales type
+        editable: true
+        type: input-text
+        defaultValue: CASH_SALES
+      - name: product_group
+        label: Product group
+        type: input-text
+        editable: true
+      - name: customer_code
+        label: Customer code
+        type: input-text
+        editable: true
+      - name: document_date
+        label: Document date
+        type: input-text
+        max: documentDueDate
+        editable: true
+        defaultValue: '[CurrentDate]'
+      - name: document_due_date
+        label: Document due date
+        type: input-text
+        min: documentDate
+        editable: true
+        defaultValue: '[Tomorrow]'
+      - name: po_number
+        label: Po number
+        type: input-text
+        editable: true
+      - name: group_number
+        label: Group number
+        type: input-text
+        editable: true
+      - name: document_amount
+        label: Document amount
+        type: input-text
+        editable: true
+        defaultValue: 9999.99
+      - name: withholding_tax
+        label: Withholding tax
+        type: input-text
+        editable: true
+        defaultValue: 9999.99
+      - name: outstanding_amount
+        label: Outstanding amount
+        type: input-text
+        editable: true
+        defaultValue: 9999.99
+      - name: currency_code
+        label: Currency code
+        editable: true
+        type: input-text
+        defaultValue: THB
+      - name: reference_number
+        label: Reference number
+        type: input-text
+        editable: true
+      - name: delete_document
+        label: Delete document
+        type: input-text
+        editable: true
+        defaultValue: 'false'
+
+    submission:
+      confirmation:
+        message: Confirm send document?
+        handler: insertDocument
+        success:
+          message: Send document success.
+          handler: noop
+
+    footer:
+      actions:
+      - label: Back
+        handler:
+          navigation:
+            to: back
+      - label: Send
+        type: submit
+        buttonType: primary

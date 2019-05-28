@@ -1,0 +1,25 @@
+<div ng-if="$ctrl.config.header!=undefined" class="tile-title-w-btn">
+	<h3 class="title" ng-bind="$ctrl.config.header.title | translate"></h3>
+	<p>
+		<gec-button-action ng-repeat="action in $ctrl.config.header.actions"
+			config="action" handler="action.handler"> </gec-button-action>
+	</p>
+</div>
+<div class="responsive-table">
+	<table class="table table-hover table-striped table-bordered"
+		cellspacing="0" block-ui="{{$ctrl.config.name}}">
+		<thead>
+			<tr>
+				<th class="text-center" gec-document-th="column"
+					ng-repeat="column in $ctrl.columns track by $index"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="record in $ctrl.data track by $index" context-menu="$ctrl.menuContext(record)">
+				<td gec-document-td="record" ng-repeat="column in $ctrl.columns"
+					column-render="column" index-no="$parent.$index"
+					page-options="$ctrl.paging"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

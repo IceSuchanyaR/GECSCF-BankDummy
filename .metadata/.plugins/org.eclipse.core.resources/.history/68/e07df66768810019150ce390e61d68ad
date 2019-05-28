@@ -1,0 +1,149 @@
+<style type="text/css">
+.form-control {
+	width: 150%;
+}
+
+.form-horizontal .control-label {
+	width: 190px;
+}
+</style>
+<body>
+	<div class="app-title">
+		<h1>Mapping Response Bank - View</h1>
+		<button ui-sref="mapping_code_list" class="btn btn-danger btn-sx"
+			title="Back">Back</button>
+	</div>
+	<div class="title panel-body body-white">
+
+		<form class="form-horizontal">
+			<div class="form-group row">
+				<label class="control-label col-4 in-text-right">Bank Code</label>
+				<div class="col-sm-5" style="padding-bottom: 7px;">{{$ctrlMappingView.view.bankCode}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-4 in-text-right">Service Type</label>
+				<div class="col-sm-5" style="padding-bottom: 7px;">{{$ctrlMappingView.view.serviceTypeDisplay}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-4 in-text-right">Delay</label>
+				<div class="col-sm-5" style="padding-bottom: 7px;">
+					{{$ctrlMappingView.view.delay}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-4 in-text-right">Create Time</label>
+				<div class="col-sm-5" style="padding-bottom: 7px;">
+					{{$ctrlMappingView.view.createTimeDisplay}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-4 in-text-right">Create By</label>
+				<div class="col-sm-5" style="padding-bottom: 7px;">
+					{{$ctrlMappingView.view.createByUser.username}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-4 in-text-right">Update Time </label>
+				<div class="col-sm-5" style="padding-bottom: 7px;">
+					{{$ctrlMappingView.view.updateTimeDisplay}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-4 in-text-right">Update By </label>
+				<div class="col-sm-5" style="padding-bottom: 7px;">
+					{{$ctrlMappingView.view.updateByUser.username}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+			</div>
+		</form>
+		<br />
+
+		<div class="panel panel-default">
+			<h4>Mapping Response Bank Detail</h4>
+			<br />
+			<div class="panel-body">
+
+				<div class="table-responsive">
+					<table width="100%"
+						class="table table-striped table-bordered table-hover"
+						id="dataTables-example">
+						<thead>
+							<tr style="background: #ccc">
+								<th>
+									<div align="center">Item No.</div>
+								</th>
+								<th>
+									<div align="center">Bank Case</div>
+								</th>
+								<th>
+									<div align="center">Transaction Status</div>
+								</th>
+
+								<th>
+									<div align="center">Failure Reason Code</div>
+								</th>
+								<th>
+									<div align="center">Failure Reason</div>
+								</th>
+								<th>
+									<div align="center">Update Time</div>
+								</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="odd gradeX"
+								ng-repeat="each in $ctrlMappingView.view.masterMappingCodeDetail">
+								<td class="center">
+									<div align="center">{{each.itemNo}}</div>
+
+								</td>
+								<td>
+									<div align="left" style="word-wrap: break-word;">{{each.bankCaseDisplay}}</div>
+								</td>
+								<td>
+									<div align="center" style="word-wrap: break-word;">{{each.transactionStatusDisplay}}</div>
+								</td>
+
+								<td>
+									<div align="center"
+										style="word-wrap: break-word; width: 140px;">{{each.failureReasonCode}}</div>
+								</td>
+								<td>
+									<div align="left" style="word-wrap: break-word; width: 140px;">{{each.failureReason}}</div>
+								</td>
+								<td>
+									<div align="center" style="word-wrap: break-word;">{{each.updateTimeDisplay}}</div>
+								</td>
+
+							</tr>
+							<tr ng-show="$ctrlMappingView.total == 0">
+								<td colspan="6"><div align="center">No record found</div></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>

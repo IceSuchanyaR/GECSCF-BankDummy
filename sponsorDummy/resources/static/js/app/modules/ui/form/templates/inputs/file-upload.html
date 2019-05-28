@@ -1,0 +1,12 @@
+<div class="input-group">
+	<div class="custom-file">
+		<input type="file" accept="{{acceptFileExtention}}"
+			gec-file-model="$ctrl.fileUpload" class="custom-file-input">
+		<label class="custom-file-label">{{fileName}}</label>
+	</div>
+	<div class="input-group-append" ng-if="hasAction">
+		<button class="btn btn-primary" type="button"
+			ng-click="$ctrl.upload()">{{'Upload' |
+			translate}}</button>
+	</div>
+</div>

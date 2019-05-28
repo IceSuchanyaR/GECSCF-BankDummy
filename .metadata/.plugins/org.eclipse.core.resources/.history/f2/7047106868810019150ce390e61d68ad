@@ -1,0 +1,3 @@
+<div class="tile-footer d-flex justify-content-end">
+	<p class="bs-component" ng-transclude=""></p>
+</div>

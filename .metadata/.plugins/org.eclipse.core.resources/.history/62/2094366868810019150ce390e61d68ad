@@ -1,0 +1,9 @@
+<label class="control-label" for="{{config.name}}"
+	ng-bind="config.label"></label>&nbsp;:
+<input type="text" ng-disabled="config.disabled"
+	placeholder="{{config.placeholder}}" class="form-control"
+	uib-typeahead="data as data.label for data in config.query($viewValue)"
+	autocomplete="off" ng-model="model[config.name]"
+	ng-required="config.required" name="{{config.name}}" />
+<span ng-if="errors[config.name]" class="error-msg"
+	ng-bind="errors[config.name]"></span>

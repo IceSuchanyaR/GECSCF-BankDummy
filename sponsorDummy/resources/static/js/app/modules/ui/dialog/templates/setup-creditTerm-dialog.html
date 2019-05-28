@@ -1,0 +1,253 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<h2>
+			<span id="popup-confirm-header-message-label" class="popup-text"
+				ng-bind="ngDialogData.headerMessage | translate"></span>
+		</h2>
+	</div>
+	<div class="modal-body">
+		<form name="creditTermSetup" class="form-horizontal">
+			<div class="form-group row">
+				<label id="credit-term-code-label" for="credit-term-code-textbox"
+					class="col-12 control-label"> <span
+					ng-bind="'Credit term code' | translate"></span> :
+				</label>
+				<div class="col-12">
+					<scf-input-text id="credit-term-code-textbox"
+						ng-model="ctrl.model.creditterm.creditTermCode" maxlength="255"></scf-input-text>
+					<span class="error-msg" ng-show="ctrl.isRequired"
+						id="credit-term-code-warning-message-label"
+						ng-bind="'Credit term code is required.' | translate"></span>
+				</div>
+			</div>
+
+			<div class="section">
+				<h5 id="select-formula-label" for="expected-value"
+					class="control-label">
+					<span ng-bind="'Step 1 : Select formula' | translate"></span>
+				</h5>
+
+				<div class="form-group row">
+					<div class="col-12">
+						<label id="actual-sponsor-payment-date-label" for="expected-value">
+							<span ng-bind="'Actual Sponsor payment date' | translate"></span>
+							:
+						</label>
+					</div>
+
+					<div class="row col no-margin">
+						<div class="div-btn-style col-12 col-sm-4 text-center">
+							<label class="checkbox-inline no-spaces"> <input
+								type="checkbox" id="start-date-checkbox"
+								ng-model="ctrl.useStartDateActive" ng-disable="disabled"
+								disabled="disabled" /> <span class="no-margin">{{'Start
+									date (Include start date)' | translate}}</span>
+							</label>
+						</div>
+						<div class="col text-center"
+							style="font-weight: 900; padding: 10px;">
+							<b> + </b>
+						</div>
+						<div class="div-btn-style col-12 col-sm-3 text-center"
+							ng-click="ctrl.checkCreditTerm()">
+							<label class="checkbox-inline no-spaces"> <input
+								type="checkbox" id="credit-term-checkbox"
+								ng-model="ctrl.useCreditTerm" /> <span class="no-margin">{{'Credit
+									term' | translate}}</span>
+							</label>
+						</div>
+						<div class="col text-center"
+							style="font-weight: 900; padding: 10px;">
+							<b> + </b>
+						</div>
+						<div class="div-btn-style col-12 col-sm-3 text-center"
+							ng-click="ctrl.checkPaymentPeriod()">
+							<label class="checkbox-inline no-spaces"> <input
+								type="checkbox" id="payment-period-checkbox"
+								ng-model="ctrl.usePaymentPeriod" /> <span class="no-margin"
+								ng-bind="'Payment period' | translate"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section">
+				<h5 id="setup-parameter-label" for="expected-value"
+					class="control-label">
+					<span ng-bind="'Step 2 : Setup parameter' | translate"></span>
+				</h5>
+
+				<div class="form-group">
+					<h5 class="panel-title" id="start-date-header-label"
+						ng-bind="'Start date' | translate"></h5>
+
+					<div class="panel-body">
+						<div class="form-group">
+							<label id="start-date-with-condition-label" for="expected-value"
+								class="control-label"> <span
+								ng-bind="'Start date with condition' | translate"></span> :
+							</label>
+							<scf-dropdown id="start-date-with-condition-dropdown"
+								ng-model="ctrl.model.creditterm.startDateType"
+								component-data="ctrl.startDateDropdown"
+								ng-change="ctrl.changeStartDateType()"></scf-dropdown>
+						</div>
+
+						<div class="form-group row-non-margin"
+							ng-show="ctrl.isAfterDocumentDate">
+							<label class="full-w control-label" id="from-period-date-label">
+								<span ng-bind="'From period date' | translate"></span> :
+							</label>
+							<div class="col no-spaces">
+								<scf-dropdown id="start-date-dropdown"
+									ng-model="ctrl.model.creditterm.documentDateStartPeriod"
+									component-data="ctrl.dateDropdown" convert-to-number="true"></scf-dropdown>
+								<span class="error-msg full-w" ng-show="ctrl.isDateLessThan"
+									ng-bind="'From date must be less than or equal to To date.' | translate"></span>
+							</div>
+							<div class="no-spaces text-center" style="padding: 10px">
+								<label id="to-period-date-label"> <span
+									ng-bind="'to' | translate"></span> :
+								</label>
+							</div>
+							<div class="col no-spaces">
+								<scf-dropdown id="end-date-dropdown"
+									ng-model="ctrl.model.creditterm.documentDateEndPeriod"
+									component-data="ctrl.dateDropdown" convert-to-number="true"></scf-dropdown>
+							</div>
+						</div>
+
+
+						<div class="form-group row-non-margin full-w"
+							ng-show="ctrl.isFromDocumentDate || ctrl.isAfterDocumentDate">
+							<label id="start-date-of-month-label" class="control-label"
+								for="expected-value"> <span ng-bind="'Date' | translate"></span>
+								:
+							</label>
+
+							<scf-dropdown id="start-date-of-month-dropdown"
+								ng-model="ctrl.model.creditterm.startDateOfMonth"
+								convert-to-number="true" component-data="ctrl.dateDropdown"></scf-dropdown>
+						</div>
+
+						<div class="row-non-margin full-w"
+							ng-show="ctrl.isFromDocumentDate || ctrl.isAfterDocumentDate">
+							<label id="start-month-type-label" class="control-label full-w">
+								<span ng-bind="'Month' | translate"></span> :
+							</label>
+
+							<scf-dropdown id="start-month-type-dropdown"
+								ng-model="ctrl.model.creditterm.startMonthType"
+								component-data="ctrl.startMonthTypeDropdown"
+								ng-change="ctrl.changeMonth()" class="form-group col"></scf-dropdown>
+							<div class="row-space-input-dialog"></div>
+							<div class="col-3 no-padding">
+								<input id="start-number-of-next-month-textbox" maxlength="2"
+									restrict-to="[0-9]" type="number" min="1" max="999"
+									ng-model="ctrl.model.creditterm.startNumberOfNextMonth"
+									class="form-control no-margin form-group"
+									ng-disabled="ctrl.model.creditterm.startMonthType == ctrl.startMonthTypeDropdown[0].value" />
+								<span class="error-msg" ng-show="ctrl.isErrorMonth"
+									id="start-month-type-warning-message-label"
+									ng-bind="'This field is required and value must be 1-999.' | translate"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section">
+				<div class="form-group full-w" ng-show="ctrl.useCreditTerm">
+					<div class="panel credit-term-panel panel-shadow full-w">
+
+						<h5 class="panel-title" id="credit-term-panel-header-label"
+							ng-bind="'Credit term' | translate"></h5>
+
+						<div class="form-group full-h">
+							<div class="full-w">
+								<label id="term-label" for="expected-value"> <span
+									ng-bind="'Credit term' | translate"></span> :
+								</label>
+							</div>
+							<div class="row no-spaces">
+								<div class="col-3 no-spaces">
+									<input id="term-textbox" class="form-control"
+										ng-model="ctrl.model.creditterm.term" maxlength="2"
+										restrict-to="[0-9]" type="number" min="1" max="999" /> <span
+										class="error-msg" ng-show="ctrl.isErrorCreditTerm"
+										id="credit-term-warning-message-label"
+										ng-bind="'This field is required and value must be 1-999.' | translate"></span>
+								</div>
+								<div class="row-space-input-dialog"></div>
+								<scf-dropdown class="col" id="term-type-dropdown"
+									ng-model="ctrl.model.creditterm.termType"
+									component-data="ctrl.termTypeDropdown"></scf-dropdown>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row no-spaces section"
+				ng-show="ctrl.usePaymentPeriod">
+				<div class="panel full-w payment-period-panel panel-shadow">
+					<h5 class="panel-title" id="payment-period-header-label">
+						<span ng-bind="'Payment period' | translate"></span> <span
+							class="pull-right"> <scf-button class="btn-success"
+								id="payment-period-add-button" title="New a payment period"
+								ng-click="ctrl.configPeriod()"> <i
+								class="fa fa-plus" aria-hidden="true"></i> <label
+								class="no-spaces" ng-bind="'New' | translate"></label> </scf-button>
+						</span>
+					</h5>
+
+					<div class="full-w">
+						<label class="radio-inline full-w"> <scf-radio
+								id="payment-period-type-radio-all" name="payment-period-radio"
+								ng-model="ctrl.model.creditterm.periodType"
+								ng-value="ctrl.periodType.EVERY_PERIOD"></scf-radio> <span
+							ng-bind="'Every period' | translate"></span>
+						</label> <label class="radio-inline full-w"> <scf-radio
+								id="payment-period-type-radio-specific"
+								name="payment-period-radio"
+								ng-model="ctrl.model.creditterm.periodType"
+								ng-value="ctrl.periodType.SPECIFIC"></scf-radio> <span
+							ng-bind="'Specific period' | translate"></span>
+						</label>
+
+						<div>
+							<ul class="nav nav-list"
+								ng-repeat="paymentPeriodItem in ctrl.paymentPeriods track by $index">
+								<li><label class="checkbox-inline label-thin"> <input
+										type="checkbox"
+										ng-disabled="ctrl.model.creditterm.periodType == ctrl.periodType.EVERY_PERIOD"
+										ng-value="{{paymentPeriodItem.paymentPeriodId}}"
+										checklist-model="ctrl.model.creditterm.paymentPeriods"
+										checklist-value="paymentPeriodItem"
+										id="payment-period-{{paymentPeriodItem.paymentPeriodId}}-checkbox" />
+										<span ng-bind="paymentPeriodItem | period"></span>
+								</label></li>
+							</ul>
+							<span class="error-msg" ng-show="ctrl.isErrorPaymentPeriod"
+								id="payment-periods-warning-message-label"
+								ng-bind="'Payment period is required.' | translate"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal-footer">
+	<div class="text-right">
+		<scf-button id="credit-term-code-cancel-button"
+			class="popup-button btn-default" data-dismiss="modal"
+			ng-click="closeThisDialog()" ng-bind="'Cancel' | translate"></scf-button>
+		<label class="row-space-btn"></label>
+		<scf-button id="credit-term-code-save-button"
+			class="popup-button btn-success" data-dismiss="modal"
+			ng-click="ctrl.saveCreditterm(ctrl.model.creditterm, closeThisDialog)"
+			ng-bind="'Save' | translate"></scf-button>
+	</div>
+</div>

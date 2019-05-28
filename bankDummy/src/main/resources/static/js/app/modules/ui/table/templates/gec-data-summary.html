@@ -1,0 +1,22 @@
+<br />
+<div ng-repeat="(key, value) in $ctrl.data">
+	<div class="row">
+		<div class="col-md-3 hidden-md-down"></div>
+		<div class="col-md-4 col-sm-8 text-left">
+			<label ng-bind="key | translate"></label>
+		</div>
+	</div>
+
+	<div class="row" ng-repeat="record in value">
+		<div class="col-md-3 hidden-md-down"></div>
+		<div class="col-md-4 col-sm-8 text-left">
+			<span
+				ng-bind="(record.name | translate) + ' (' + (record.totalRecord | number) +' '+ ($ctrl.config.prefixLanguageKey + '.records' | translate) + ')'"></span>
+		</div>
+		<div class="col-md-2 col-sm-4 text-right">
+			<span ng-bind="key"></span>&nbsp;<span ng-bind="record.totalAmount | number:2"></span>
+		</div>
+		<div class="col-md-3 hidden-md-down"></div>
+	</div>
+	<div class="row" ><br/></div>
+</div>

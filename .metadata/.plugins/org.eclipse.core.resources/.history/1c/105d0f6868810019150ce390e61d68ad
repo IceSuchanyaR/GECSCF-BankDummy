@@ -1,0 +1,4 @@
+<div class="text-left">
+	<span class="text-left" ng-class="{'cursor': $ctrl.config.onClick}" ng-click="$ctrl.onClick(data)"
+		ng-bind="($ctrl.config.translate? (data | translate: ($ctrl.record.parameters)) : (data) )"></span>
+</div>

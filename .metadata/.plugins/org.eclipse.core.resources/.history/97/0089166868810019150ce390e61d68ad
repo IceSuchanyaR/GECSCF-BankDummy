@@ -1,0 +1,58 @@
+<div class="tile-title-w-btn">
+	<h6>{{$ctrl.config.title | translate}}</h6>
+</div>
+<div class="responsive-table">
+	<table class="table table-hover table-striped table-bordered"
+		cellspacing="0">
+		<thead>
+			<tr>
+				<th class="text-center"
+					ng-repeat="column in $ctrl.config.columns track by $index"
+					ng-bind="column.label | translate"
+					style="white-space: nowrap; min-width: 200px;"></th>
+				<th style="width: 1%;"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="record in $ctrl.model track by $index">
+				<td ng-repeat="column in $ctrl.config.columns track by $index"
+					column="column"><gec-table-column data="record"
+						config="column"
+						ng-if="!column.editable &amp;&amp; column.type!='rownumber'">
+					</gec-table-column> <gec-editable-table-column data="record[column.name]"
+						config="column" ng-disabled="$ctrl.config.disabled"
+						ng-if="column.editable &amp;&amp; column.type!='rownumber'">
+					</gec-editable-table-column>
+
+					<div class="text-center" ng-if="column.type=='rownumber'">
+						<span ng-bind="($parent.$parent.$index + 1)"></span>
+					</div></td>
+				<td>
+					<div class="btn-group" role="group" aria-label="Table actions">
+						<button ng-repeat="action in $ctrl.config.actions"
+							class="btn " type="button"
+							ng-click="$ctrl.doAction(action, record)"
+							title="{{action.label | translate}}">
+							<i class="fa {{action.icon}}" aria-hidden="true"></i>
+						</button>
+						<button class="btn " type="button"
+							ng-click="$ctrl.deleteItem(record)"
+							title="{{'core.action.delete' | translate}}">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</button>
+					</div>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="tile-title-w-btn">
+	<p>
+		<button type="button" class="btn btn-default" ng-click="$ctrl.add()">{{
+			$ctrl.config.addButtonLabel | translate}}</button>
+		<span class="error-msg"
+			ng-bind="errors[$ctrl.config.name].cause |
+			translate:errors[$ctrl.config.name].params"></span>
+	</p>
+</div>

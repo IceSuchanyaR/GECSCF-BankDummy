@@ -1,0 +1,32 @@
+<div class="tile-title-w-btn">
+	<h3 class="title" ng-bind="$ctrl.config.title | translate"></h3>
+	<p>
+		<button type="button" class="btn collapsed"
+			id="{{$ctrl.config.name}}-filter-button" data-toggle="collapse"
+			data-target="#{{$ctrl.config.name}}-filter-panel"
+			ng-click="$ctrl.setDefault()">
+			<i class="fa fa-fw fa-lg fa-filter"></i> {{'Filter' |
+			translate}}
+		</button>
+	</p>
+</div>
+<div class="tile-body collapse" id="{{$ctrl.config.name}}-filter-panel">
+	<gec-form config="$ctrl.config.form" name="$ctrl.config.name"
+		model="$ctrl.criteria" data="$ctrl.pageData">
+
+	<div class="row-fit form-group justify-content-center">
+		<button
+			class="col-lg-2 col-md-3 col no-padding-horizontal btn btn-primary"
+			ng-click="$ctrl.search($ctrl.criteria)">
+			<i class="fa fa-fw fa-lg fa-search"></i>{{'Search' |
+			translate}}
+		</button>
+		&nbsp;&nbsp;
+		<button class="col-lg-2 col-md-3 col no-padding-horizontal btn"
+			type="button" ng-click="$ctrl.clear($ctrl.criteria)">
+			<i class="fa fa-fw fa-lg fa-eraser"></i>{{'Clear' |
+			translate}}
+		</button>
+	</div>
+	</gec-form>
+</div>

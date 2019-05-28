@@ -1,0 +1,296 @@
+<style type="text/css">
+.form-control {
+	width: 150%;
+}
+
+.form-horizontal .control-label {
+	width: 190px;
+}
+</style>
+<body>
+	<div class="app-title">
+        <h1>Mapping Response Bank - {{ mode }}</h1>
+		<span class="col"></span>
+		<button class="btn btn-primary btn-sx" title="Submit"
+			ng-click="$ctrlMappingMgnt.submitMappingCode(params)">Submit</button>
+		<span class="space"> </span>
+		<button class="btn btn-danger btn-sx" ui-sref="mapping_code_list"
+			title="Back">Back</button>
+	</div>
+	<div class="title panel-body body-white">
+
+		<div class="alert alert-danger" role="alert" id="alert-MappingCode"
+			ng-show="$ctrlMappingMgnt.displayAlertError">
+			<div>
+				<strong>{{$ctrlMappingMgnt.showErrorMessage}}</strong>
+			</div>
+		</div>
+
+		<div class="alert alert-success" role="alert" id="alert-MappingCode"
+			ng-show="$ctrlMappingMgnt.displayAlertSuccess">
+			<div>
+				<strong>Submit success</strong>
+			</div>
+		</div>
+
+		<div ng-switch="$ctrlMappingMgnt.step">
+			<div class="stepone" ng-switch-when="one">
+				<div class="row">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+							<li class="nav-item active">
+								<a class="alert alert-primary" style="font-size: 20px"
+									disabled="true">Mapping
+									Response Bank</a></li>
+							<li class="nav-item d-none d-lg-block">
+								<a class="alert" style="font-size: 20px"
+									disabled="true">Mapping
+									Response Bank Detail</a></li>
+							<span class="col"></span>
+						</ul>
+					</nav>
+				</div>
+				<div class="full-w">
+					<form class="form-horizontal"
+						style="border: 1px solid gray; border-radius: 5px;"
+						ng-submit="$ctrlMappingMgnt.stepTwo(params);
+						$ctrlMappingMgnt.getMasterBankCase(params)">
+						<br />
+						<br />
+
+						<div class="form-group row">
+							<label for="bankCode" class="control-label col-4 in-text-right">Bank
+								Code : <a style="color: red;">*</a>
+							</label>
+							<div class="col-5">
+								<select class="form-control" id="bankCode"
+									ng-model="params.bankCode" style="height: 34px;"
+									ng-required="$ctrlMappingMgnt.required"
+									ng-disabled="$ctrlMappingMgnt.editMode">
+									<option value="">Please select</option>
+									<option ng-repeat="each in $ctrlMappingMgnt.bankCode">{{each}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<hr class="col-sm-11" style="border-top: dotted 0.5px;"
+								/>
+						</div>
+						<div class="form-group row">
+							<label for="serviceType" class="control-label col-4 in-text-right">Service
+								Type : <a style="color: red;">*</a>
+							</label>
+							<div class="col-5">
+								<select class="form-control" id="serviceType"
+									style="height: 34px;"
+									ng-change="$ctrlMappingMgnt.clearMappingCodeDetail()"
+									ng-model="params.serviceType"
+									ng-disabled="$ctrlMappingMgnt.editMode"
+									ng-options="each.configValue as each.configDisplay for each in
+									$ctrlMappingMgnt.configApp"
+									ng-required="$ctrlMappingMgnt.required">
+									<option value="">Please select</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<hr class="col-sm-11" style="border-top: dotted 0.5px;"
+								/>
+						</div>
+						<div class="form-group row">
+							<label for="delay" class="control-label col-4 in-text-right">Delay
+								: <a style="color: red;">*</a>
+							</label>
+							<div class="col-5">
+								<input type="number" class="form-control" id="delay"
+									value="0" min="0" max="120" ng-model="params.delay"
+									ng-required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+						</div>
+
+						<div class="padding-1" align="right">
+							<button type="submit" title="Continue"
+								class="btn btn-primary col col-sm-4 col-md-3">Continue</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="stepTwo" ng-switch-when="two">
+				<div class="row">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+							<li class="nav-item d-none d-lg-block">
+								<a class="alert" style="font-size: 20px"
+									disabled="true">Mapping
+									Response Bank</a></li>
+							<li class="nav-item active">
+								<a class="alert alert-primary" style="font-size: 20px"
+									disabled="true">Mapping
+									Response Bank Detail</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="full-w">
+					<form class="form-horizontal"
+						style="border: 1px solid gray; border-radius: 5px;"
+						ng-submit="$ctrlMappingMgnt.addRow()" id="createform">
+						<br />
+						<br />
+						<div class="form-group row">
+							<label for="bankCase" class="control-label col-4 in-text-right">Bank
+								Case : <a style="color: red;">*</a>
+							</label>
+							<div class="col-5">
+								<select
+									ng-change="$ctrlMappingMgnt.getTransactionStatus(masterMappingCode)"
+									class="form-control" style="height: 34px;"
+									ng-options="each.bankCaseCode as each.bankCaseName for each in
+									$ctrlMappingMgnt.AllbankCase"
+									ng-model="masterMappingCode.bankCaseDisplay"
+									ng-required="$ctrlMappingMgnt.required">
+									<option value="">Please select</option>
+								</select>
+							</div>
+
+						</div>
+						<div class="form-group row">
+							<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+						</div>
+
+						<div class="form-group row">
+							<label class="control-label col-4 in-text-right"> Transaction
+								Status :</label>
+							<div class="col-5">
+								<label for="transactionStatus"
+									ng-model="masterMappingCode.transactionStatus">
+									{{status.bankCaseStatus}}</label>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+						</div>
+
+						<div class="form-group row">
+							<label for="failureReasonCode" class="control-label col-4 in-text-right">
+								Failure Reason Code :</label>
+							<div class="col-5">
+								<input type="text" class="form-control" id="failureReasonCode"
+									ng-model="masterMappingCode.failureReasonCode" maxlength="255" />
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+						</div>
+
+						<div class="form-group row">
+							<label for="failureReason" class="control-label col-4 in-text-right">
+								Failure Reason :</label>
+							<div class="col-5">
+								<input type="text" class="form-control" id="failureReason"
+									ng-model="masterMappingCode.failureReason" maxlength="255" />
+							</div>
+						</div>
+
+						<div class="row">
+							<hr class="col-sm-11" style="border-top: dotted 0.5px;" />
+						</div>
+
+						<div class="form-group full-w text-center padding-hori-1">
+							<button type="submit" class="btn btn-primary col col-sm-4 col-md-3
+								col-lg-2" title="Add">Add</button>
+						</div>
+
+						<br />
+						<div class="col-lg-12">
+							<div class="alert alert-danger" role="alert" id="alertDuplicate"
+								ng-show="$ctrlMappingMgnt.alertDuplicate">
+								<strong>Mapping Code Detail is duplicate.</strong>
+							</div>
+							<div class="table-responsive">
+								<table width="100%"
+									class="table table-striped table-bordered table-hover"
+									id="dataTables-example">
+									<thead>
+										<tr style="background: #ccc">
+											<th>
+												<div align="center">Item No.</div>
+											</th>
+											<th>
+												<div align="center">Bank Case</div>
+											</th>
+											<th>
+												<div align="center">Transaction Status</div>
+											</th>
+
+											<th>
+												<div align="center">Failure Reason Code</div>
+											</th>
+											<th>
+												<div align="center">Failure Reason</div>
+											</th>
+											<th>
+												<div align="center" style="width: 50px;">Action</div>
+											</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="odd gradeX" ng-repeat="each in mappingCodeDetail">
+											<td class="center">
+												<div align="center">{{$index + 1}}</div>
+											</td>
+											<td>
+												<div align="left" style="word-wrap: break-word;">{{each.bankCaseDisplay}}</div>
+											</td>
+											<td>
+												<div align="center" style="word-wrap: break-word;">{{each.transactionStatus}}</div>
+											</td>
+											<td>
+												<div align="left"
+													style="word-wrap: break-word; width: 140px;">{{each.failureReasonCode}}</div>
+											</td>
+											<td>
+												<div align="left"
+													style="word-wrap: break-word; width: 140px;">{{each.failureReason}}</div>
+											</td>
+											<td class="text-center">
+												<div>
+													<button class="btn btn-danger fa fa-trash" title="Delete"
+														ng-click="mappingCodeDetail.splice($index, 1)"
+														style="width: 37px; height: 32px;">
+													</button>
+												</div>
+											</td>
+										</tr>
+										<tr ng-show="!mappingCodeDetail.length">
+											<td colspan="6"><div align="center">No record
+													found</div></td>
+										</tr>
+									</tbody>
+								</table>
+
+								<div class="row">
+									<div class="col">
+										<div class="row text-left">
+											<div class="col-6 col-md-3 col-lg-2">
+												<button class="btn btn-danger col"
+													ng-click="$ctrlMappingMgnt.stepOne()"
+													title="Previous">Previous</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br />
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>

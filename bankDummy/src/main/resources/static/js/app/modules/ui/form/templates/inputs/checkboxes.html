@@ -1,0 +1,13 @@
+<div class="row-fit">
+	<label ng-if="options.length == 0" class="label-thin"></label>
+
+	<div class="{{$ctrl.colStyle}} no-padding-horizontal" ng-if="options.length> 0"
+		ng-repeat="item in options track by $index">
+		<label class="checkbox-label label-thin"> <input
+			type="checkbox" ng-disabled="$ctrl.disabled"
+			checklist-model="$ctrl.model" checklist-value="item.value" /> {{
+			item.label | translate }}
+
+		</label>
+	</div>
+</div>

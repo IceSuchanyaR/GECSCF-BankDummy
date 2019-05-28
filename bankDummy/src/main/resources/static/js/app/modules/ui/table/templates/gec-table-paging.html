@@ -1,0 +1,27 @@
+<div class="input-group justify-content-end" ng-if="$ctrl.table.showTable($ctrl.table.config, $ctrl.table.model)">
+	<div class="input-group-prepend">
+		<span class="paging input-group-text"
+			ng-bind="$ctrl.summaryDisplay($ctrl.table.paging.totalRecord)">
+		</span>
+	</div>
+
+	<div class="input-group-append">
+		<button ng-click="$ctrl.go('first')" ng-disabled="!$ctrl.canBack" class="btn btn-default" type="button">
+			<span class="fa fa-step-backward" aria-hidden="true"></span>
+
+		</button>
+		<button ng-click="$ctrl.go('back')" ng-disabled="!$ctrl.canBack" class="btn btn-default" type="button">
+			<span class="fa fa-angle-left" aria-hidden="true"></span>
+		</button>
+		<select name="pageSelect" ng-model="$ctrl.table.paging.size" ng-change="$ctrl.go('changePageSize')"
+			class="form-control" convert-to-number="true">
+			<option ng-repeat="size in $ctrl.pageSizes" value="{{size.value}}">{{size.label}}</option>
+		</select>
+		<button ng-click="$ctrl.go('next')" ng-disabled="!$ctrl.canNext" class="btn btn-default" type="button">
+			<span class="fa fa-angle-right" aria-hidden="true"></span>
+		</button>
+		<button ng-click="$ctrl.go('last')" ng-disabled="!$ctrl.canNext" class="btn btn-default" type="button">
+			<span class="fa fa fa-step-forward" aria-hidden="true"></span>
+		</button>
+	</div>
+</div>

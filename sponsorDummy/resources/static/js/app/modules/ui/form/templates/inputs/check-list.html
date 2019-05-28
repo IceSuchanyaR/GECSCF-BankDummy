@@ -1,0 +1,17 @@
+<div class="row-fit">
+   <label ng-if="$ctrl.doList.items.length == 0"
+      class="label-thin"> N/A
+   </label>
+
+   <div class="col-6 no-padding-horizontal" ng-if="$ctrl.doList.items.length> 0"
+      ng-repeat="item in $ctrl.doList.items track by $index">
+      <label class="checkbox-label label-thin">
+         <input type="checkbox" ng-disabled="$ctrl.disabled"
+            checklist-model="$ctrl.model"
+            checklist-value="item"
+            checklist-comparator="$ctrl.doList.comparator" />
+         {{ item.label | translate }}
+
+      </label>
+   </div>
+</div>

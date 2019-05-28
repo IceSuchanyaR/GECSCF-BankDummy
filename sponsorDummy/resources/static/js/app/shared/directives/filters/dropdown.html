@@ -1,0 +1,14 @@
+<label class="control-label" for="{{config.name}}"
+	ng-bind="config.label"></label>&nbsp;:
+<select class="form-control" name="{{config.name}}" ng-disabled="config.disabled"
+	ng-model="model[config.name]" ng-if="!config.convertToNumber">
+	<option ng-repeat="opt in config.options track by opt.value"
+		value="{{opt.value}}">{{opt.label}}</option>
+</select>
+<select class="form-control" ng-model="model[config.name]" ng-disabled="config.disabled"
+	ng-if="config.convertToNumber" convert-to-number>
+	<option ng-repeat="opt in config.options track by opt.value"
+		value="{{opt.value}}">{{opt.label}}</option>
+</select>
+<span ng-if="errors[config.name]" class="error-msg"
+	ng-bind="errors[config.name]"></span>

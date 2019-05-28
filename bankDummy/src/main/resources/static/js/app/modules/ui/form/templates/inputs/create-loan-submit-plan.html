@@ -1,0 +1,73 @@
+<div th:fragment="content">
+	<div id="bottom-sticker" class="frame-page-control">
+		<div class="row">
+			<form-item> <label id="transaction-amount-label"
+				class="control-label" ng-bind="'Transaction amount' | translate"></label>
+			:
+			<div>
+				<label class="control-label label-thin" ng-bind="'THB' | translate"></label>&nbsp;
+				<label id="validate-transaction-amount-label"
+					class="control-label label-thin"
+					ng-bind="$ctrl.model.transactionAmount | number: 2"
+					hilight-negative="true"></label>
+			</div>
+			</form-item>
+			<form-item> <label id="pre-drawdown-percentage-label"
+				class="control-label"
+				ng-bind="'Pre-drawdown percentage' | translate"></label> :
+			<div>
+				<label id="pre-drawdown-percentage-value-label"
+					class="control-label label-thin"
+					ng-bind="$ctrl.model.getPrePercentageDrawdown() | number: 2"
+					hilight-negative="true"></label>%
+			</div>
+			</form-item>
+		</div>
+		<div class="row">
+			<form-item> <label id="loan-account-label"
+				class="control-label" ng-bind="'Loan account' | translate"></label>
+			:
+			<div>
+				<label id="loan-account-value-label"
+					class="control-label label-thin"
+					ng-bind="$ctrl.model.accountData.accountNo"></label>
+			</div>
+			</form-item>
+			<form-item> <label id="available-label"
+				class="control-label" ng-bind="'Available' | translate"></label> :
+			<div>
+				<label class="control-label label-thin" ng-bind="'THB' | translate"></label>&nbsp;
+				<label id="available-value-label" class="control-label label-thin"
+					ng-bind="$ctrl.model.accountData.supplierAvailableAmount | number: 2"
+					hilight-negative="true"></label>&nbsp; <label
+					id="interest-rate-value-label" class="control-label label-thin"
+					ng-hide="$ctrl.model.accountData.accountType == 'OVERDRAFT'">
+					<span>(Int.</span> <span
+					ng-bind="$ctrl.model.accountData.interestRate"></span>
+					<span>)</span>
+				</label>
+			</div>
+			</form-item>
+		</div>
+		<div class="row">
+			<form-item> <label id="transaction-date-label"
+				class="control-label" ng-bind="'Transaction date' | translate"></label>
+			:
+			<div>
+				<label id="transaction-date-value-label"
+					class="control-label label-thin"
+					ng-bind="$ctrl.model.transactionDate | date: 'dd/MM/yyyy' : 'UTC+0700'"></label>
+			</div>
+			</form-item>
+<!-- 			<form-item> <label id="loan-maturity-date-label" -->
+<!-- 				class="control-label" ng-bind="'Maturity date' | translate"></label> -->
+<!-- 			: -->
+<!-- 			<div> -->
+<!-- 				<label id="loan-maturity-date-value-label" -->
+<!-- 					class="control-label label-thin" -->
+<!-- 					ng-bind="$ctrl.model.maturityDate | date: 'dd/MM/yyyy' : 'UTC+0700'"></label> -->
+<!-- 			</div> -->
+<!-- 			</form-item> -->
+		</div>
+	</div>
+</div>

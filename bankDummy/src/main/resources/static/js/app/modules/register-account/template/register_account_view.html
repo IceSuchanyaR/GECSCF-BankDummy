@@ -1,0 +1,170 @@
+<style type="text/css">
+.form-control {
+	width: 150%;
+}
+
+.form-horizontal .control-label {
+	width: 190px;
+}
+</style>
+<body>
+	<div class="app-title">
+				<h1>Register Account - View</h1>
+				<span class="col"></span>
+					<button ui-sref="register_account_list" class="btn btn-danger btn-sx"
+						title="Back">Back</button>
+	</div>
+	<div class="title panel-body body-white-rem-hori-1">
+
+		<form class="form-horizontal">
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">Customer
+					ID</label>
+				<div class="col-5" style="padding-bottom: 7px;">{{$ctrlView.view.customerID}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">Bank
+					Code </label>
+				<div class="col-5" style="padding-bottom: 7px;">{{$ctrlView.view.bankCode}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">Account
+					No </label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.accountNo}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">Customer
+					Code </label>
+				<div class="col-5" style="padding-bottom: 7px;">{{$ctrlView.view.customerCode}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">Account
+					Type </label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.accountTypeDisplay}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="selectPartner" class="control-label col-4 in-text-right">Customer
+					Credit Limit </label>
+				<div class="col-5" style="padding-bottom: 7px;">{{$ctrlView.view.customerCreditLimit}}</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="creditlimit" class="control-label col-4 in-text-right">Credit
+					limit </label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.creditLimit | number:2}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="outstandingAmount" class="control-label col-4 in-text-right">Outstanding
+				</label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.outstanding | number:2}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="futureAmount" class="control-label col-4 in-text-right">Ledger
+					Balance </label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.ledgerBalance | number:2}}</div>
+
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="futureAmount" class="control-label col-4 in-text-right">Available
+				</label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.available | number:2}}</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="remainingAmount" class="control-label col-4 in-text-right">Account
+					Status </label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.accountStatusDisplay}}</div>
+
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="remainingAmount" class="control-label col-4 in-text-right">Create
+					Time </label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.createTimeDisplay}}</div>
+
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="remainingAmount" class="control-label col-4 in-text-right">Create
+					By </label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.createByUser.username}}</div>
+
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="remainingAmount" class="control-label col-4 in-text-right">Update
+					Time </label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.updateTimeDisplay}}</div>
+
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="remainingAmount" class="control-label col-4 in-text-right">Update
+					By </label>
+				<div class="col-5" style="padding-bottom: 7px;">
+					{{$ctrlView.view.updateByUser.username}}</div>
+
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+	</div>
+	</form>
+	</div>
+
+
+
+
+</body>
+
+
+

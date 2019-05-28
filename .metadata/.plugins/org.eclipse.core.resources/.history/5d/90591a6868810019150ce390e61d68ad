@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-12"
+		ng-include="'/js/app/modules/payment/community-web/templates/summary.html'"></div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div
+			ng-include="'/js/app/modules/payment/community-web/templates/buyer-info.html'"></div>
+		<div
+			ng-include="'/js/app/modules/payment/community-web/templates/supplier-info.html'"></div>
+	</div>
+	<div class="col-md-6 h-100"
+		ng-include="'/js/app/modules/payment/community-web/templates/total-summary.html'"></div>
+</div>
+<div class="row">
+	<div class="col-md-12" ng-show="($ctrl.model.data.paymentStrategy != 'WITHOUT_INVOICE')"
+		ng-include="'/js/app/modules/payment/community-web/templates/document-with-invoice.html'"></div>
+	<div class="col-md-12" ng-show="($ctrl.model.data.paymentStrategy == 'WITHOUT_INVOICE')"
+		ng-include="'/js/app/modules/payment/community-web/templates/document-without-invoice.html'"></div>
+</div>
+<div class="tile">
+	<div
+		ng-include="'/js/app/modules/payment/community-web/templates/history.html'"></div>
+</div>

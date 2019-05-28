@@ -1,0 +1,151 @@
+<style type="text/css">
+.form-control {
+	width: 150%;
+}
+
+.form-horizontal .control-label {
+	width: 190px;
+}
+</style>
+
+<body>
+	<div class="app-title">
+		<h1>Mapping Response Exception - {{mode}}</h1>
+		<span class="col"></span>
+		<button class="btn btn-primary btn-sx" type="submit"
+			title="Submit" form="createform">Submit</button>
+		<span class="space"> </span>
+		<button ui-sref="mapping_exception_list" class="btn btn-danger btn-sx"
+			title="Back">Back</button>
+	</div>
+
+	<div class="title panel-body body-white-rem-hori-1">
+
+		<div class="rem-hori-1">
+			<div class="alert alert-success col"
+				ng-show="$ctrlExceptionMgnt.displayAlertSuccess">
+				<strong>Submit success</strong>
+			</div>
+			<div class="alert alert-danger col" role="alert"
+				ng-show="$ctrlExceptionMgnt.displayAlertError">
+				<strong>{{$ctrlExceptionMgnt.showErrorMessage}}</strong>
+			</div>
+		</div>
+
+		<form ng-submit="$ctrlExceptionMgnt.submitMappingException(params)"
+			id="createform" class="form-horizontal">
+
+			<div class="form-group row">
+				<label for="bankCode" class="control-label col-4 in-text-right"> Bank
+					Code <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<input type="text" class="form-control money" id="bankCode"
+						ng-model="params.bankCode"
+						ng-disabled="$ctrlExceptionMgnt.editMode" maxlength="50"
+						ng-required="true" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="accountNo" class="control-label col-4 in-text-right">
+					Account No <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<input type="text" class="form-control money" id="accountNo"
+						ng-disabled="$ctrlExceptionMgnt.editMode" maxlength="20"
+						ng-model="params.accountNo" ng-required="true" />
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="selectServiceGroup" class="control-label col-4 in-text-right">
+					Service Type <a style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<select name="selectServiceGroup" class="form-control" required
+						ng-model="params.serviceType" style="height: 34px;"
+						ng-disabled="$ctrlExceptionMgnt.editMode"
+						ng-options="obj.configValue as obj.configDisplay for obj in
+						$ctrlExceptionMgnt.configApp">
+						<option value="">Please Select</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="transactionStatus" class="control-label col-4 in-text-right">
+					Transaction Status <a style="color: red;">*</a>
+				</label> &ensp;&ensp;<input type="radio" name="transactionStatus"
+					value="SUCCESS" ng-model="params.transactionStatus" checked>
+				Success &ensp;<input type="radio" name="transactionStatus"
+					value="FAILED" ng-model="params.transactionStatus"> Failed
+
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="failureReasonCode" class="control-label col-4 in-text-right">
+					Failure Reason Code </label>
+				<div class="col-5">
+					<input type="text" class="form-control money" maxlength="255"
+						ng-model="params.failureReasonCode" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="failureReason" class="control-label col-4 in-text-right">
+					Failure Reason </label>
+				<div class="col-5">
+					<input type="text" class="form-control money" maxlength="255"
+						ng-model="params.failureReason" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+			<div class="form-group row">
+				<label for="delay" class="control-label col-4 in-text-right"> Delay <a
+						style="color: red;">*</a>
+				</label>
+				<div class="col-5">
+					<input type="number" class="form-control" id="delay" value="0"
+						min="0" max="120" ng-model="params.delay">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+			<div class="form-group row">
+				<label for="status" class="control-label col-4 in-text-right"> Status <a
+						style="color: red;">*</a>
+				</label> &ensp;&ensp;<input type="radio" name="Status" value="AC"
+					ng-model="params.status" checked> Active &ensp;<input
+					type="radio" name="Status" value="IN" ng-model="params.status">
+				Inactive
+			</div>
+
+			<div class="form-group row">
+				<hr class="col-11" style="border-top: dotted 0.5px;" />
+			</div>
+
+		</form>
+	</div>
+
+
+</body>

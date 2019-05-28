@@ -1,0 +1,15 @@
+<div class="btn-toolbar justify-content-between" role="toolbar">
+	<div class="input-group">
+		<span class="control-label">{{$ctrl.config.title | translate}}</span>
+		&nbsp;
+	</div>
+	<div class="btn-group" role="group">
+		<div ng-repeat="action in $ctrl.config.actions">
+			&nbsp;
+			<button class="btn-org btn-add btn"
+				ng-click="$ctrl.doAction(action.handler)">
+				<i ng-if="action" class="fa fa-fw fa-lg {{action.icon}}"></i>
+			</button>
+		</div>
+	</div>
+</div>

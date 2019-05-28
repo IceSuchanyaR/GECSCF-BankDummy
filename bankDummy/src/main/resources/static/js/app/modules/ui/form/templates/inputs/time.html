@@ -1,0 +1,21 @@
+<div class="input-group">
+	<input type="text"
+	       class="form-control text-center"
+		   ng-disabled="$ctrl.disabled"
+	       placeholder="{{ 'HH' | translate}}"
+	       name="{{$ctrl.config.name + 'hh'}}"
+			 ng-change="$ctrl.limitTimeControl();"
+			 ng-model="$ctrl.hh"
+	       ui-mask="99"
+	       pattern-model />
+	<span class="input-group-text time-sperator">:</span>
+    <input type="text"
+	       class="form-control text-center"
+		   ng-disabled="$ctrl.disabled"
+	       placeholder="{{ 'MM' | translate}}"
+	       name="{{$ctrl.config.name + 'mm'}}"
+			 ng-change="$ctrl.limitTimeControl();"
+			 ng-model="$ctrl.mm"
+	       ui-mask="99"
+	       pattern-model />
+</div>

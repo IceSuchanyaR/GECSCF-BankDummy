@@ -1,0 +1,29 @@
+<div class="modal-content">
+	<form name="successDialogForm" class="form-horizontal"
+		ng-submit="closeThisDialog();">
+		<div class="modal-header">
+			<row>
+				<h2>
+					<span id="popup-header-message-label"
+						ng-bind="ngDialogData.data.headerMessage | translate">Fail</span>
+				</h2>
+			</row>
+		</div>
+		<div class="modal-body">
+			<div class="text-center">
+				<div>
+					<image width="70" height="70" ng-src="img/notify-icon.png"></image>
+				</div>
+				<div>
+					<span id="popup-message-label" ng-bind="ngDialogData.data.bodyMessage"></span>
+				</div>
+			</div>
+		</div>
+		<div class="modal-body">
+			<div class="text-center">
+				<button id="popup-ok-button" class="btn btn-primary" type="submit"
+					ng-click="closeThisDialog();" ng-bind="'OK' | translate"></button>
+			</div>
+		</div>
+	</form>
+</div>

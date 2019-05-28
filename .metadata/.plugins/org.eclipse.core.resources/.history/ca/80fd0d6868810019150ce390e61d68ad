@@ -1,0 +1,2 @@
+<gec-dropdown  ng-disabled="$ctrl.config.disabled"
+		model="$ctrl.data" config="$ctrl.config"> </gec-dropdown>

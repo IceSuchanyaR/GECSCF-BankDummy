@@ -1,0 +1,90 @@
+page:
+  title: User Management
+  filter:
+    actions:
+    - label: New
+      icon: fa-plus
+      buttonType: success
+      handler:
+        navigation:
+          to: userManagement.creation
+    form:
+      rows:
+      - items:
+        - name: username
+          label: Username
+          maxlength: 255
+          type: typeahead
+          placeholder: Enter username
+          query:
+            handler: queryLenderNameTypehead
+        - name: fullName
+          label: Full name
+          type: typeahead
+          maxlength: 255
+          placeholder: Enter full name
+          query:
+            handler: queryLenderNameTypehead
+        - name: role
+          label: Role
+          type: dropdown
+          options:
+          - label: All
+            value: null
+          - label: Common User
+            value: COMMON_USER
+          - label: Sponsor User
+            value: SPONSOR_USER
+          - label: Bank User
+            value: BANK_USER
+        - name: status
+          label: status
+          type: dropdown
+          options:
+          - label: All
+            value: null
+          - label: Activate
+            value: true
+          - label: Suspend
+            value: false
+    table:
+      name: users-profile
+      autoSearch: true
+      fetching:
+        handler: getUsers
+      columns:
+      - type: rownumber
+        label: No.
+        name: fundingIdPlaintext
+      - type: text
+        label: Username
+        name: username
+      - type: text
+        label: Full Name
+        name: fullName
+      - type: text
+        label: Role
+        name: role
+      - type: text
+        label: E-mail
+        name: email
+      - type: datetime
+        label: Update Time
+        name: updateTime
+      - type: text
+        label: Update By
+        name: updateByUsername
+      - type: status
+        label: Status
+        name: status
+      actions:
+      - label: View
+        icon: fa-search
+        handler:
+          navigation:
+            to: userManagement.detail
+      - label: Edit
+        icon: fa-pencil
+        handler:
+          navigation:
+            to: userManagement.modification

@@ -1,0 +1,38 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<div class="row">
+			<div class="col-md-2 col-sm-2">
+				<image width="70" height="70" ng-src="img/error-icon.png"></image>
+			</div>
+			<div class="col-md-10 col-sm-10" style="color: red;">
+				<h2><span id="adjust-status-fail-header" ng-bind="ngDialogData.data.prefixLanguageKey + '.popup.label.title' | translate"></span></h2>
+			</div>
+		</div>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-2 col-sm-2"></div>
+			<div class="col-md-10 col-sm-10">
+				<label ng-bind="ngDialogData.data.prefixLanguageKey + '.popup.label.transaction_no' | translate"></label> :&nbsp;<span
+					id="fail-transaction-no-label" ng-bind="ngDialogData.data.transactionNo"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-sm-2"></div>
+			<div class="col-md-10 col-sm-10">
+				<label ng-bind="ngDialogData.data.prefixLanguageKey + '.popup.label.reason' | translate"></label> :&nbsp;<span
+					id="fail-reason-label" ng-bind="ngDialogData.data.result | translate"></span>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="text-right">
+			<scf-button id="incomplete-re-check-button" class="popup-button"
+					data-dismiss="modal" ng-bind="'Recheck' | translate" ng-if="ngDialogData.data.canResend"
+					ng-click="closeThisDialog(true);ngDialogData.data.resend(ngDialogData.data.transaction , ngDialogData)"></scf-button>
+			<label class="row-space-btn" ng-if="ngDialogData.data.canResend"></label>
+			<scf-button id="ok-button" class="popup-button btn-primary" 
+				ng-click="ngDialogData.data.closeDialog()" ng-bind="'Close' | translate"></scf-button>
+		</div>
+	</div>
+</div>

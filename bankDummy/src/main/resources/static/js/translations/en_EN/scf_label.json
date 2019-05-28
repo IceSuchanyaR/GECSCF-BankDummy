@@ -1,0 +1,6 @@
+{
+  "SUCCESS": "Success",
+  "FAILED": "Failed",
+  "INCOMPLETE": "Incomplete",
+  "error.required": "{{field}} is required."
+}
