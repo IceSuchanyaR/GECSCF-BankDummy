@@ -24,7 +24,7 @@
 		<flywaydb.version>5.0.5</flywaydb.version>
 		<jackson.version>2.9.5</jackson.version>
 		<lombok.version>1.16.20</lombok.version>
-		<oauth2.version>2.2.1.RELEASE</oauth2.version>
+		<oauth2.version>2.2.4.RELEASE</oauth2.version>
 
 		<wro4j.version>1.8.0</wro4j.version>
 	</properties>
